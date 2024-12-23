@@ -13,7 +13,7 @@ class _Drawer extends StatelessWidget {
           ),
         ),
         ListTile(title: Text('settings'.tr()), onTap: () {}),
-        ListTile(title: Text('quit'.tr()), onTap: () {}),
+        ListTile(title: Text('quit'.tr()), onTap:()   { exit(0);} ),
       ],
     );
   }
@@ -76,7 +76,7 @@ class _NumericBox extends StatelessWidget {
             name,
             style: const TextStyle(
               color: AppColors.accentBlue900,
-              fontWeight: FontWeight.bold,
+              fontSize: AppDimens.fontMedium
             ),
           ),
           const SizedBox(
@@ -183,7 +183,7 @@ class _LazyList extends StatelessWidget {
         return ListTile(
           leading: CircleAvatar(
             backgroundColor: AppColors.accentBlue900,
-            child: Text(item.id.toString()),
+            child: Text((item.id +1 ).toString()),
           ),
           title: Text(item.name),
           onTap: () {

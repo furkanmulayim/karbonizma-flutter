@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:karbonizma/feature/home/hello_state.dart';
+import 'package:karbonizma/feature/hello/hello_state.dart';
 
 ///Hello View Model
 class HelloCubit extends Cubit<TestState> {

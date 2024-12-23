@@ -51,7 +51,8 @@ class _PersentageText extends StatelessWidget {
         child: Center(
           child: Text(
             '$tittle $ratio',
-            style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.accentBlue900),
+            style: const TextStyle(
+                fontWeight: FontWeight.bold, color: AppColors.accentBlue900),
           ),
         ),
       ),

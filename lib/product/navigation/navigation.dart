@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/feature/greeting/greeting_view.dart';
-import 'package:karbonizma/feature/home/hello_view.dart';
+import 'package:karbonizma/feature/hello/hello_view.dart';
 import 'package:karbonizma/feature/menu/menu_view.dart';
 import 'package:karbonizma/feature/recycle/recycle_view.dart';
 

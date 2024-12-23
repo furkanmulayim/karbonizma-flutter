@@ -21,7 +21,7 @@ class _CongratsHeader extends StatelessWidget {
         child: Text(
           'congrats'.tr(),
           style: const TextStyle(
-            fontSize: AppDimens.fontExtraLarge,
+            fontSize: AppDimens.fontLarge,
             fontWeight: FontWeight.bold,
             color: AppColors.textWhite,
           ),
@@ -46,7 +46,7 @@ class _CongratsText extends StatelessWidget {
           '${RecycleRepository().recycleItems[id].name} ${'congrats_title_one'.tr()} $waste ${'congrats_title_two'.tr()} ${RecycleRepository().recycleItems[id].carbonRatio} ${'congrats_title_three'.tr()} ${RecycleRepository().recycleItems[id].persentage} ${'congrats_title_four'.tr()}',
           textAlign: TextAlign.justify,
           style: const TextStyle(
-            fontSize: AppDimens.fontLarge,
+            fontSize: AppDimens.fontMedium,
             color: AppColors.textWhite,
           ),
         ),

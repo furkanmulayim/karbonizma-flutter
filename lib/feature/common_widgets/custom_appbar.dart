@@ -1,4 +1,4 @@
-part of '../home/hello_view.dart';
+part of '../hello/hello_view.dart';
 
 ///
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
