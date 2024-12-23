@@ -1,0 +1,66 @@
+name: karbonizma
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  # Repo url eklenebilir.  
+  # Modul eklenbilir.
+
+  kartal: ^4.1.0
+  #Utility Package 
+
+  go_router: ^14.6.2
+  #Navigation  
+
+  vexana: ^5.0.2  
+  #HTTP 
+
+  equatable: ^2.0.7
+
+  flutter_bloc: ^8.1.6
+  #State Management
+
+  easy_localization: ^3.0.7
+  #Çoklu Dil Desteği
+
+  json_annotation: ^4.9.0
+  #Model oluşturmak için 
+
+  envied: ^1.0.0
+  #Dosya okuma işlemleri 
+
+  lottie: ^3.2.0
+  #Dosya okuma işlemleri 
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^6.0.0
+  build_runner: ^2.4.13
+  flutter_gen_runner: ^5.8.0
+
+  flutter_lints: ^4.0.0
+
+flutter_gen:
+  output: /lib/product/generated/
+  integrations:
+    lottie: true
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/lottie/
+    - assets/translations/

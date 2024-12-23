@@ -1,0 +1,25 @@
+{
+    "app_name": "Karbonizma",
+    "welcome": "Hoşgeldiniz",
+    "lang": "Türkçe",
+    "settings": "Ayarlar",
+    "quit": "Uygulamadan Çıkış",
+    "menu_header_text": "Doğada hayat var.",
+    "eco_point": "Eko Puan",
+    "saving_point": "CO₂ Tasarruf",
+    "recycle_point": "Dönüşüm",
+    "recycle": "Dönüştür",
+    "history": "Geçmiş",
+    "recycle_title": "Geri Dönüşebilir Atıklar",
+    "percentage": "CO₂ Kazanımı",
+    "ratio": "CO₂ Oranı",
+    "weight": " KG",
+    "waste_info": "KG Belirle ve Dönüştür",
+    "congrats": "Siz bir harikasınız.",
+    "congrats_title_one": "ürününüzün",
+    "congrats_title_two": "kilogramında",
+    "congrats_title_three": "gr karbon bulunmaktadır. Bu size yaklaşık olarak",
+    "congrats_title_four": "oranına tekabul etmektedir. Doğayı koruduğunuz için teşekkür ederiz.",
+    "home_button": "Ana Menü"
+
+}
