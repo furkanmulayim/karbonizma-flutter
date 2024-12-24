@@ -9,12 +9,26 @@ import 'package:karbonizma/product/util/constant/app_colors.dart';
 
 part 'list_view_widgets.dart';
 
-class ListViewPage extends StatelessWidget {
+///
+class ListViewPage extends StatefulWidget {
+  ///
   const ListViewPage({super.key});
 
   @override
+  State<ListViewPage> createState() => _ListState();
+}
+
+class _ListState extends State<ListViewPage> {
+  @override
+  void initState() {
+    listBloc.add(ListInitialEvent());
+    super.initState();
+  }
+
+  final listBloc = ListBloc();
+
+  @override
   Widget build(BuildContext context) {
-    final listBloc = ListBloc();
     return BlocProvider(
       create: (context) => listBloc,
       child: BlocConsumer<ListBloc, ListState>(
