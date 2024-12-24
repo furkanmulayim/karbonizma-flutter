@@ -13,7 +13,12 @@ class _Drawer extends StatelessWidget {
           ),
         ),
         ListTile(title: Text('settings'.tr()), onTap: () {}),
-        ListTile(title: Text('quit'.tr()), onTap:()   { exit(0);} ),
+        ListTile(
+          title: Text('quit'.tr()),
+          onTap: () {
+            exit(0);
+          },
+        ),
       ],
     );
   }
@@ -75,9 +80,7 @@ class _NumericBox extends StatelessWidget {
           Text(
             name,
             style: const TextStyle(
-              color: AppColors.accentBlue900,
-              fontSize: AppDimens.fontMedium
-            ),
+                color: AppColors.accentBlue900, fontSize: AppDimens.fontMedium),
           ),
           const SizedBox(
             height: 3,
@@ -142,6 +145,9 @@ class _IconTextButton extends StatelessWidget {
 }
 
 class _DoubleButton extends StatelessWidget {
+  const _DoubleButton({required this.menuBloc});
+  final MenuBloc menuBloc;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -151,7 +157,9 @@ class _DoubleButton extends StatelessWidget {
         children: [
           Expanded(
             child: _IconTextButton(
-              onPressed: () {},
+              onPressed: () {
+                menuBloc.add(MenuRecycleButtonNavigateEvent());
+              },
               iconData: Icons.recycling,
               text: 'recycle'.tr(),
             ),
@@ -159,7 +167,9 @@ class _DoubleButton extends StatelessWidget {
           WidthBox(),
           Expanded(
             child: _IconTextButton(
-              onPressed: () {},
+              onPressed: () {
+                print("History Butonu Tıklandı");
+              },
               iconData: Icons.history,
               text: 'history'.tr(),
             ),
@@ -183,7 +193,7 @@ class _LazyList extends StatelessWidget {
         return ListTile(
           leading: CircleAvatar(
             backgroundColor: AppColors.accentBlue900,
-            child: Text((item.id +1 ).toString()),
+            child: Text((item.id + 1).toString()),
           ),
           title: Text(item.name),
           onTap: () {

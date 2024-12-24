@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/feature/greeting/greeting_view.dart';
 import 'package:karbonizma/feature/hello/hello_view.dart';
+import 'package:karbonizma/feature/list/list_view.dart';
 import 'package:karbonizma/feature/menu/menu_view.dart';
 import 'package:karbonizma/feature/recycle/recycle_view.dart';
 
@@ -16,6 +17,10 @@ class AppRoutes {
       GoRoute(
         path: '/menu',
         builder: (context, state) => const MenuView(),
+      ),
+       GoRoute(
+        path: '/list',
+        builder: (context, state) => const ListViewPage(),
       ),
       GoRoute(
         path: '/recycle/:id',

@@ -4,6 +4,7 @@ class RecycleModel {
   RecycleModel({
     required this.id,
     required this.name,
+    required this.image,
     required this.explain,
     required this.persentage,
     required this.carbonRatio,
@@ -15,6 +16,9 @@ class RecycleModel {
   /// Name
   final String name;
 
+  /// image
+  final String image;
+  
   /// Explain
   final String explain;
 
