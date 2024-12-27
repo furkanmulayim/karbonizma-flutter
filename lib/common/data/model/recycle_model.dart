@@ -1,6 +1,4 @@
-/// Recycle item dataclass
 class RecycleModel {
-  /// Constructor
   RecycleModel({
     required this.id,
     required this.name,
@@ -10,25 +8,6 @@ class RecycleModel {
     required this.carbonRatio,
   });
 
-  /// ID
-  final int id;
-
-  /// Name
-  final String name;
-
-  /// Image
-  final String image;
-
-  /// Explain
-  final String explain;
-
-  /// Percentage
-  final String persentage;
-
-  /// Carbon Ratio
-  final int carbonRatio;
-
-  /// Factory method to create an instance from JSON
   factory RecycleModel.fromJson(Map<String, dynamic> json) {
     return RecycleModel(
       id: json['id'],
@@ -40,7 +19,13 @@ class RecycleModel {
     );
   }
 
-  /// Method to convert an instance to JSON
+  final int carbonRatio;
+  final String explain;
+  final int id;
+  final String image;
+  final String name;
+  final String persentage;
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
