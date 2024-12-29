@@ -16,34 +16,47 @@ class _HeaderContainers extends StatelessWidget {
         Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: AppDimens.paddingMedium),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            _NumericBox(
-              name: AppTexts.ecoPoint,
-              data: eco,
-            ),
-            WidthBox(),
-            _NumericBox(
-              name: AppTexts.savingPoint,
-              data: co2,
-            ),
-            WidthBox(),
-            _NumericBox(
-              name: AppTexts.rePoint,
-              data: re,
-            ),
-          ]),
-        )
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: _NumericBox(
+                  name: AppTexts.ecoPoint,
+                  icon: AppTexts.ecoPointIcon,
+                  data: eco,
+                ),
+              ),
+              const SizedBox(width: AppDimens.paddingSmall),
+              Expanded(
+                child: _NumericBox(
+                  name: AppTexts.savingPoint,
+                  icon: AppTexts.savingPointIcon,
+                  data: co2,
+                ),
+              ),
+              const SizedBox(width: AppDimens.paddingSmall),
+              Expanded(
+                child: _NumericBox(
+                  name: AppTexts.rePoint,
+                  icon: AppTexts.rePointIcon,
+                  data: re,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
 }
 
 class _NumericBox extends StatelessWidget {
-  const _NumericBox({required this.name, required this.data});
+  const _NumericBox(
+      {required this.name, required this.data, required this.icon});
 
   final String data;
   final String name;
-  //final String icon;
+  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +70,20 @@ class _NumericBox extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Image.asset(
+            icon,
+            width: AppDimens.iconLarge,
+          ),
+          SizedBox(height: 5,),
           Text(
             name,
             style: const TextStyle(
                 color: AppColors.accentBlue900, fontSize: AppDimens.fontMedium),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          const SizedBox(height: 5),
           Text(
             data,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.accentBlue900,
               fontWeight: FontWeight.bold,
             ),

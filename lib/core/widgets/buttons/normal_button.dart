@@ -14,7 +14,7 @@ class NormalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimens.paddingLarge),
+      padding: const EdgeInsets.symmetric(vertical: AppDimens.paddingSmall),
       child: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: AppDimens.paddingMedium),

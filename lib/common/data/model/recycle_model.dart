@@ -1,4 +1,27 @@
-class RecycleModel {
+import 'package:hive/hive.dart';
+
+part 'recycle_model.g.dart';
+
+@HiveType(typeId: 0)
+class RecycleModel extends HiveObject {
+  @HiveField(0)
+  final int id;
+
+  @HiveField(1)
+  final String name;
+
+  @HiveField(2)
+  final String image;
+
+  @HiveField(3)
+  final String explain;
+
+  @HiveField(4)
+  final String persentage;
+
+  @HiveField(5)
+  final int carbonRatio;
+
   RecycleModel({
     required this.id,
     required this.name,
@@ -18,13 +41,6 @@ class RecycleModel {
       carbonRatio: json['carbonRatio'],
     );
   }
-
-  final int carbonRatio;
-  final String explain;
-  final int id;
-  final String image;
-  final String name;
-  final String persentage;
 
   Map<String, dynamic> toJson() {
     return {

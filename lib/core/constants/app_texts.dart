@@ -6,5 +6,8 @@ class AppTexts {
   static const String ecoPoint = "Eko Puan";
   static const String savingPoint = "CO₂ Kazanç";
   static const String rePoint = "Dönüşümler";
+  static const String ecoPointIcon = 'assets/png/money.png';
+  static const String savingPointIcon = 'assets/png/footprint.png';
+  static const String rePointIcon = 'assets/png/recycle.png';
   static const String homePageTitle = "Geri Dönüştürülebilir Atıklar!";
 }

@@ -26,12 +26,12 @@ class _LazyList extends StatelessWidget {
           title: Text(
             item.name,
             style: TextStyle(
-                fontSize: AppDimens.fontMedium,
+              fontSize: AppDimens.fontMedium,
               color: AppColors.accentBlue1000,
             ),
           ),
           onTap: () {
-            //context.go('/recycle/${item.id}');
+            context.go('/detail/${item.id}');
           },
         );
       },
