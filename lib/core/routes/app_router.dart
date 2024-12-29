@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:karbonizma/ui/detail/detail_view.dart';
+import 'package:karbonizma/ui/detail/view/detail_view.dart';
 import 'package:karbonizma/ui/home/view/home_view.dart';
 
 class AppRouter {

@@ -17,6 +17,7 @@ class AppDimens {
 
   // Font Boyutları
   static const double fontSmall = 12.0;
+  static const double fontsMedium = 14.0;
   static const double fontMedium = 16.0;
   static const double fontxMedium = 18.0;
   static const double fontLarge = 20.0;
@@ -28,6 +29,7 @@ class AppDimens {
   static const double iconLarge = 32.0;
   static const double iconXLarge = 48.0;
   static const double iconXXLarge = 64.0;
+  static const double iconXXXLarge = 150.0;
   static const double iconExtraLarge = 200.0;
 
   // Genel Boyutlar

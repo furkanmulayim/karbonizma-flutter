@@ -78,7 +78,7 @@ class _NumericBox extends StatelessWidget {
           Text(
             name,
             style: const TextStyle(
-                color: AppColors.accentBlue900, fontSize: AppDimens.fontMedium),
+                color: AppColors.accentBlue900, fontSize: AppDimens.fontsMedium),
           ),
           const SizedBox(height: 5),
           Text(
