@@ -43,6 +43,7 @@ class _NumericBox extends StatelessWidget {
 
   final String data;
   final String name;
+  //final String icon;
 
   @override
   Widget build(BuildContext context) {

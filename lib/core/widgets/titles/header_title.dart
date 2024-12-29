@@ -27,7 +27,8 @@ class HeaderTitle extends StatelessWidget {
             textAlign: TextAlign.start,
             style: const TextStyle(
               fontSize: AppDimens.fontLarge,
-              color: AppColors.accentBlue900,
+                fontWeight: FontWeight.w500,
+              color: AppColors.accentBlue1000,
             ),
           ),
         ),

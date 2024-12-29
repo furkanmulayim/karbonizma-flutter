@@ -18,15 +18,16 @@ class _LazyList extends StatelessWidget {
               (item.id + 1).toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: AppColors.accentBlue300,
+                fontSize: AppDimens.fontLarge,
+                color: AppColors.textWhite,
               ),
             ),
           ),
           title: Text(
             item.name,
-            
             style: TextStyle(
-              color: AppColors.accentBlue900,
+                fontSize: AppDimens.fontMedium,
+              color: AppColors.accentBlue1000,
             ),
           ),
           onTap: () {

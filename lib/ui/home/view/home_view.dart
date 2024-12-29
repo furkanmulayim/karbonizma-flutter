@@ -81,7 +81,14 @@ class _MenuBody extends StatelessWidget {
             co2: '100',
             re: '32',
           ),
-          NormalButton(onclick: () {}, text: AppTexts.homePageButton),
+          NormalButton(
+            onClick: () {},
+            text: AppTexts.homePageButton,
+            icon: Icon(
+              Icons.history,
+              color: AppColors.textWhite,
+            ),
+          ),
           HeaderTitle(title: AppTexts.homePageTitle),
           Flexible(
             child: _LazyList(items: items),

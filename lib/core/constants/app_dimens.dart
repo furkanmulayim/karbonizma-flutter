@@ -6,6 +6,7 @@ class AppDimens {
   static const double paddingXSmall = 8.0;
   static const double paddingSmall = 12.0;
   static const double paddingMedium = 16.0;
+  static const double paddingXMedium = 20.0;
   static const double paddingLarge = 24.0;
   static const double paddingXLarge = 24.0;
 
@@ -17,6 +18,7 @@ class AppDimens {
   // Font Boyutları
   static const double fontSmall = 12.0;
   static const double fontMedium = 16.0;
+  static const double fontxMedium = 18.0;
   static const double fontLarge = 20.0;
   static const double fontExtraLarge = 24.0;
 

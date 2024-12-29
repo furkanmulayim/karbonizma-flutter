@@ -19,6 +19,7 @@ class AppColors {
   static const Color dividerColor = Color(0xFFBDBDBD);
 
 
+  static const Color accentBlue1000 = Color.fromARGB(255, 23, 61, 35);
   static const Color accentBlue900 = Color.fromARGB(255, 46, 88, 59);
   static const Color accentBlue500 = Color.fromARGB(255, 71, 111, 78);
   static const Color accentBlue300 = Color.fromARGB(255, 66, 120, 92);
