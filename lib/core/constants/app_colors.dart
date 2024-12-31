@@ -24,4 +24,5 @@ class AppColors {
   static const Color accentBlue300 = Color.fromARGB(255, 66, 120, 92);
   static const Color accentBlue200 = Color.fromARGB(172, 156, 203, 163);
   static const Color accentBlue100 = Color.fromARGB(255, 83, 173, 108);
+  static const Color accentBlue50 = Color.fromARGB(255, 113, 210, 140);
 }

@@ -1,46 +1,77 @@
 part of '../view/detail_view.dart';
 
-class WasteWeight extends StatelessWidget {
-  const WasteWeight({super.key});
+class _WasteWeight extends StatelessWidget {
+  const _WasteWeight({
+    required this.stater,
+    required this.increaseWasteGram,
+    required this.decreaseWasteGram,
+  });
+
+  final VoidCallback decreaseWasteGram;
+  final VoidCallback increaseWasteGram;
+  final String stater;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Sol buton (minus)
-            GestureDetector(
-              onTap: () {
-                // - butonuna tıklama işlevi
-              },
-              child: CircleAvatar(
-                radius: 25,
-                backgroundColor: Colors.blue,
-                child: Icon(Icons.remove, color: Colors.white),
-              ),
-            ),
-            SizedBox(width: 5), // Soldaki metin ile - buton arasında boşluk
-            // Soldaki metin
-            Text('Metin 1', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 5), // Metinler arasındaki boşluk
-            // Sağdaki metin
-            Text('Metin 2', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 5), // Sağdaki metin ile + buton arasında boşluk
-            // Sağ buton (plus)
-            GestureDetector(
-              onTap: () {
-                // + butonuna tıklama işlevi
-              },
-              child: CircleAvatar(
-                radius: 25,
-                backgroundColor: Colors.blue,
-                child: Icon(Icons.add, color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          vertical: AppDimens.paddingXLarge,
+          horizontal: AppDimens.paddingMedium),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _RoundedButtton(
+            icom: Icons.remove,
+            onClick: decreaseWasteGram,
+          ),
+          Row(
+            children: [
+              _WeightText(text: stater),
+              _WeightText(text: AppTexts.detailWeight),
+            ],
+          ),
+          _RoundedButtton(
+            icom: Icons.add,
+            onClick: increaseWasteGram,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _WeightText extends StatelessWidget {
+  const _WeightText({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text,
+        style: TextStyle(
+            fontSize: AppDimens.fontExtraLarge,
+            fontWeight: FontWeight.bold,
+            color: AppColors.accentBlue900));
+  }
+}
+
+class _RoundedButtton extends StatelessWidget {
+  const _RoundedButtton({
+    required this.icom,
+    required this.onClick,
+  });
+
+  final IconData icom;
+  final VoidCallback onClick;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      child: FloatingActionButton(
+        onPressed: onClick,
+        backgroundColor: AppColors.accentBlue100,
+        shape: CircleBorder(),
+        child: Icon(icom, color: AppColors.textWhite),
       ),
     );
   }

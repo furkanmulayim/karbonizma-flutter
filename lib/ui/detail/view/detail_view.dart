@@ -6,10 +6,13 @@ import 'package:karbonizma/common/data/repository/user_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
+import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
+import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_bloc.dart';
+import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
 
 part '../widgets/header_content.dart';
 part '../widgets/waste_weight.dart';
@@ -41,28 +44,37 @@ class _DetailViewState extends State<DetailView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => detailBloc,
-      child: Scaffold(
-        appBar: BackAppBar(
-            text: "Details",
-            backClick: () {
-              context.go('/');
-            }),
-        body: BlocBuilder<DetailBloc, DetailState>(
-          builder: (context, state) {
-            switch (state) {
-              case DetailLoadingState(): //loading
-                return Center(child: CircularProgressIndicator());
-              case DetailLoadingSuccessState(): //succes
-                return _DetailBody(item: state.waste);
-              case DetailErrorState(): //error
-                return Center(child: Text('ERROR!!'));
-              default: //default
-                return Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
+      child: BlocBuilder<DetailBloc, DetailState>(
+        builder: (context, state) {
+          String appBarTitle = '';
+          if (state is DetailLoadingSuccessState) {
+            appBarTitle = state.waste.name;
+          }
+
+          return Scaffold(
+            appBar: BackAppBar(
+              text: appBarTitle,
+              backClick: () {
+                context.go('/');
+              },
+            ),
+            body: _buildBody(state),
+          );
+        },
       ),
     );
+  }
+
+  Widget _buildBody(DetailState state) {
+    if (state is DetailLoadingState) {
+      return const Center(child: CircularProgressIndicator());
+    } else if (state is DetailLoadingSuccessState) {
+      return _DetailBody(item: state.waste);
+    } else if (state is DetailErrorState) {
+      return const Center(child: Text('ERROR!!'));
+    } else {
+      return const Center(child: CircularProgressIndicator());
+    }
   }
 }
 
@@ -78,7 +90,26 @@ class _DetailBody extends StatelessWidget {
         children: [
           HeaderContent(
               imageUrl: item.image, name: item.name, explain: item.explain),
-          WasteWeight(),
+          BlocBuilder<DetailCubit, int>(
+            builder: (context, state) {
+              return Column(
+                children: [
+                  _WasteWeight(
+                      stater: state.toString(),
+                      increaseWasteGram: context.read<DetailCubit>().increase,
+                      decreaseWasteGram: context.read<DetailCubit>().decrease)
+                ],
+              );
+            },
+          ),
+          NormalButton(
+            onClick: () {},
+            text: '${item.name} ${AppTexts.detailPageButton}',
+            icon: Icon(
+              Icons.recycling,
+              color: AppColors.textWhite,
+            ),
+          ),
         ],
       ),
     );

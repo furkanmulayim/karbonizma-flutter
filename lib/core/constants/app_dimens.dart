@@ -29,7 +29,7 @@ class AppDimens {
   static const double iconLarge = 32.0;
   static const double iconXLarge = 48.0;
   static const double iconXXLarge = 64.0;
-  static const double iconXXXLarge = 150.0;
+  static const double iconXXXLarge = 100.0;
   static const double iconExtraLarge = 200.0;
 
   // Genel Boyutlar

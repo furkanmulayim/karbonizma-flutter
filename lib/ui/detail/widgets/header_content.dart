@@ -14,47 +14,32 @@ class HeaderContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.all(AppDimens.paddingLarge),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           HeightBox(),
-          HeightBox(),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              WidthBox(),
-              // Fotoğraf
-              Image.network(
-                imageUrl,
-                width: AppDimens.iconXXXLarge,
-                height: AppDimens.iconXXXLarge,
-                fit: BoxFit.cover,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppDimens.borderRadius),
+                child: Image.network(
+                  imageUrl,
+                  width: AppDimens.iconXXXLarge,
+                  fit: BoxFit.cover,
+                ),
               ),
               WidthBox(),
-
-              // Metin
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // İsim
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontSize: AppDimens.fontExtraLarge,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    HeightBox(),
-                    // Açıklama
-                    Text(
-                      explain,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.textSecondary,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+              Expanded(
+                child: Text(
+                  explain,
+                  style: TextStyle(
+                    fontSize: AppDimens.fontMedium,
+                    color: AppColors.textSecondary,
+                  ),
+                  textAlign: TextAlign.start,
                 ),
               ),
             ],
