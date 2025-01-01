@@ -20,15 +20,14 @@ class HeaderTitle extends StatelessWidget {
         padding:
             const EdgeInsets.symmetric(horizontal: AppDimens.paddingMedium),
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: AppDimens.paddingMedium),
+          padding: const EdgeInsets.only(top: AppDimens.paddingSmall),
           child: Text(
             title,
             textAlign: TextAlign.start,
             style: const TextStyle(
               fontSize: AppDimens.fontLarge,
-                fontWeight: FontWeight.w500,
-              color: AppColors.accentBlue1000,
+              fontWeight: FontWeight.w500,
+              color: AppColors.dividerColor,
             ),
           ),
         ),

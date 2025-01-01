@@ -7,34 +7,37 @@ class _LazyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundColor: AppColors.accentBlue100,
-            child: Text(
-              (item.id + 1).toString(),
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: AppDimens.fontLarge,
-                color: AppColors.textWhite,
+    return Padding(
+      padding: const EdgeInsets.only(top: AppDimens.paddingSmall),
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return ListTile(
+            leading: CircleAvatar(
+              backgroundColor: AppColors.accentBlue100,
+              child: Text(
+                (item.id + 1).toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: AppDimens.fontLarge,
+                  color: AppColors.textWhite,
+                ),
               ),
             ),
-          ),
-          title: Text(
-            item.name,
-            style: TextStyle(
-              fontSize: AppDimens.fontMedium,
-              color: AppColors.accentBlue1000,
+            title: Text(
+              item.name,
+              style: TextStyle(
+                fontSize: AppDimens.fontMedium,
+                color: AppColors.accentBlue1000,
+              ),
             ),
-          ),
-          onTap: () {
-            context.go('/detail/${item.id}');
-          },
-        );
-      },
+            onTap: () {
+              context.go('/detail/${item.id}');
+            },
+          );
+        },
+      ),
     );
   }
 }

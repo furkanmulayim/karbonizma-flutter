@@ -11,9 +11,11 @@ import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
+import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_bloc.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
 
+part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
 part '../widgets/waste_weight.dart';
 
@@ -90,6 +92,13 @@ class _DetailBody extends StatelessWidget {
         children: [
           HeaderContent(
               imageUrl: item.image, name: item.name, explain: item.explain),
+          HeightBox(),
+          HeaderTitle(title: AppTexts.detailPageCarbonTitles),
+          _HeaderContainers(
+            persentage: '%70',
+            ratio: '0.2',
+          ),
+          HeightBox(),
           BlocBuilder<DetailCubit, int>(
             builder: (context, state) {
               return Column(

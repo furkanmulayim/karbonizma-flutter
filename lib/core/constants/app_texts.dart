@@ -10,6 +10,9 @@ class AppTexts {
   static const String ecoPointIcon = 'assets/png/money.png';
   static const String savingPointIcon = 'assets/png/footprint.png';
   static const String rePointIcon = 'assets/png/recycle.png';
-  static const String homePageTitle = "Geri Dönüştürülebilir Atıklar!";
+  static const String homePageListTitle = "Geri Dönüştürülebilir Atıklar!";
+  static const String homePagePointTitles = "Puan İstatistikleri";
+  static const String detailPageCarbonTitles = "Karbon İçeriği";
+  static const String detailPageDetailsTitles = "Detayları";
   static const String detailWeight = " KG";
 }

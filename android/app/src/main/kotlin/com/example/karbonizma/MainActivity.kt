@@ -1,4 +1,4 @@
-package com.example.karbonizma
+package com.furkanmulayim.karbonizma
 
 import io.flutter.embedding.android.FlutterActivity
 

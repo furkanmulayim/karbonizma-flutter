@@ -12,7 +12,6 @@ class _HeaderContainers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeightBox(),
         Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: AppDimens.paddingMedium),
@@ -74,11 +73,14 @@ class _NumericBox extends StatelessWidget {
             icon,
             width: AppDimens.iconLarge,
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Text(
             name,
             style: const TextStyle(
-                color: AppColors.accentBlue900, fontSize: AppDimens.fontsMedium),
+                color: AppColors.accentBlue900,
+                fontSize: AppDimens.fontsMedium),
           ),
           const SizedBox(height: 5),
           Text(

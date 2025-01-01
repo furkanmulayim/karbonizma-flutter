@@ -14,9 +14,10 @@ class AppColors {
   static const Color textWhite = Color(0xFFFFFFFF);
 
   // Gölgelendirme ve Diğer Tonlar
+  static const Color greyxLight = Color.fromARGB(255, 224, 224, 224);
   static const Color greyLight = Color(0xFFBDBDBD);
   static const Color greyDark = Color(0xFF424242);
-  static const Color dividerColor = Color(0xFFBDBDBD);
+  static const Color dividerColor = Color.fromARGB(255, 125, 125, 125);
 
   static const Color accentBlue1000 = Color.fromARGB(255, 23, 61, 35);
   static const Color accentBlue900 = Color.fromARGB(255, 46, 88, 59);

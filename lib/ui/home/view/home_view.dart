@@ -11,7 +11,6 @@ import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/flat_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
-import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/ui/home/bloc/home_bloc.dart';
 
@@ -76,21 +75,21 @@ class _MenuBody extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+          HeaderTitle(title: AppTexts.homePagePointTitles),
           _HeaderContainers(
             eco: '12',
             co2: '100',
             re: '32',
           ),
           NormalButton(
-            onClick: () {
-            },
+            onClick: () {},
             text: AppTexts.homePageButton,
             icon: Icon(
               Icons.history,
               color: AppColors.textWhite,
             ),
           ),
-          HeaderTitle(title: AppTexts.homePageTitle),
+          HeaderTitle(title: AppTexts.homePageListTitle),
           Flexible(
             child: _LazyList(items: items),
           ),
