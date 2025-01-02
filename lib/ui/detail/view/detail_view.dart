@@ -13,8 +13,8 @@ import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
-import 'package:karbonizma/ui/detail/bloc/detail_bloc.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
+import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
 
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
@@ -30,27 +30,27 @@ class DetailView extends StatefulWidget {
 }
 
 class _DetailViewState extends State<DetailView> {
-  late final DetailBloc detailBloc;
+  late final CarbonBloc homeBloc;
 
   @override
   void initState() {
     super.initState();
-    detailBloc = DetailBloc(
+    homeBloc = CarbonBloc(
         recycleRepo: RecycleRepository(
           apiService: RecycleApiService(),
         ),
         id: widget.id);
-    detailBloc.add(DetailInitialEvent());
+    homeBloc.add(CarbonInitialEventById());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => detailBloc,
-      child: BlocBuilder<DetailBloc, DetailState>(
+      create: (context) => homeBloc,
+      child: BlocBuilder<CarbonBloc, CarbonState>(
         builder: (context, state) {
           String appBarTitle = '';
-          if (state is DetailLoadingSuccessState) {
+          if (state is CarbonLoadingSuccessStateById) {
             appBarTitle = state.waste.name;
           }
 
@@ -68,12 +68,12 @@ class _DetailViewState extends State<DetailView> {
     );
   }
 
-  Widget _buildBody(DetailState state) {
-    if (state is DetailLoadingState) {
+  Widget _buildBody(CarbonState state) {
+    if (state is CarbonLoadingState) {
       return const Center(child: CircularProgressIndicator());
-    } else if (state is DetailLoadingSuccessState) {
+    } else if (state is CarbonLoadingSuccessStateById) {
       return _DetailBody(item: state.waste);
-    } else if (state is DetailErrorState) {
+    } else if (state is CarbonErrorState) {
       return const Center(child: Text('ERROR!!'));
     } else {
       return const Center(child: CircularProgressIndicator());

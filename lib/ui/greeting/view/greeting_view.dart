@@ -9,16 +9,32 @@ import 'package:lottie/lottie.dart';
 
 part '../widgets/greeting_widgets.dart';
 
-class GreetingView extends StatelessWidget {
-  const GreetingView({required this.id, required this.waste, super.key});
+class GreetingView extends StatefulWidget {
+  const GreetingView({super.key, required this.id, required this.waste});
+
   final int id;
   final int waste;
 
   @override
+  State<GreetingView> createState() => _GreetingViewState();
+}
+
+class _GreetingViewState extends State<GreetingView> {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _GreetingBody(id: id, waste: waste),
-    );
+        appBar: AppBar(title: const Text('Greeting')),
+        body: _GreetingBody(id: widget.id, waste: widget.waste));
   }
 }
 
