@@ -21,7 +21,7 @@ class RecycleModelAdapter extends TypeAdapter<RecycleModel> {
       name: fields[1] as String,
       image: fields[2] as String,
       explain: fields[3] as String,
-      persentage: fields[4] as String,
+      persentage: fields[4] as int,
       carbonRatio: fields[5] as int,
     );
   }

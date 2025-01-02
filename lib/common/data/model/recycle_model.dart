@@ -17,7 +17,7 @@ class RecycleModel extends HiveObject {
   final String explain;
 
   @HiveField(4)
-  final String persentage;
+  final int persentage;
 
   @HiveField(5)
   final int carbonRatio;

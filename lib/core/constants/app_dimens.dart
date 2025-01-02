@@ -9,6 +9,7 @@ class AppDimens {
   static const double paddingXMedium = 20.0;
   static const double paddingLarge = 24.0;
   static const double paddingXLarge = 24.0;
+  static const double paddingXXLarge = 36.0;
 
   //Padding
   static const double marginSmall = 8.0;
@@ -45,4 +46,5 @@ class AppDimens {
   static const double cardElevation = 2.0;
   static const double cardLElevation = 4.0;
   static const double borderRadius = 8.0;
+  static const double borderLargeRadius = 16.0;
 }

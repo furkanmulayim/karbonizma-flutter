@@ -16,4 +16,14 @@ class DetailCubit extends Cubit<int> {
       emit(state - 1);
     }
   }
+
+  int calcPersentageValue(int persentage) {
+    int percent = persentage * state;
+    return percent;
+  }
+
+  int calcRatioValue(int ratio) {
+    int rat = ratio * state;
+    return rat;
+  }
 }

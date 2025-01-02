@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/data/model/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/user_repository.dart';
@@ -90,34 +91,34 @@ class _DetailBody extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          HeaderContent(
-              imageUrl: item.image, name: item.name, explain: item.explain),
-          HeightBox(),
+          HeaderContent(imageUrl: item.image, explain: item.explain),
           HeaderTitle(title: AppTexts.detailPageCarbonTitles),
-          _HeaderContainers(
-            persentage: '%70',
-            ratio: '0.2',
-          ),
-          HeightBox(),
           BlocBuilder<DetailCubit, int>(
             builder: (context, state) {
               return Column(
                 children: [
+                  _CarbonContent(
+                    persentage: context
+                        .read<DetailCubit>()
+                        .calcPersentageValue(item.persentage),
+                    ratio: context
+                        .read<DetailCubit>()
+                        .calcPersentageValue(item.carbonRatio),
+                  ),
                   _WasteWeight(
                       stater: state.toString(),
                       increaseWasteGram: context.read<DetailCubit>().increase,
-                      decreaseWasteGram: context.read<DetailCubit>().decrease)
+                      decreaseWasteGram: context.read<DetailCubit>().decrease),
+                  NormalButton(
+                    onClick: () {
+                      context.go('/congrats/${item.id}/$state');
+                    },
+                    text: '${item.name} ${AppTexts.detailPageButton}',
+                    icon: Icon(Icons.recycling, color: AppColors.textWhite),
+                  ),
                 ],
               );
             },
-          ),
-          NormalButton(
-            onClick: () {},
-            text: '${item.name} ${AppTexts.detailPageButton}',
-            icon: Icon(
-              Icons.recycling,
-              color: AppColors.textWhite,
-            ),
           ),
         ],
       ),

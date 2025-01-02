@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 
 class HeightBox extends StatelessWidget {
-  const HeightBox({super.key});
+  const HeightBox({super.key, this.h});
+  final double? h;
 
   @override
   Widget build(Object context) {
-    return const SizedBox(
-      height: AppDimens.paddingSmall,
+    return SizedBox(
+      height: h ?? AppDimens.paddingSmall,
     );
   }
 }

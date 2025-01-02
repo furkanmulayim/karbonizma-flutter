@@ -4,13 +4,11 @@ class HeaderContent extends StatelessWidget {
   const HeaderContent({
     super.key,
     required this.imageUrl,
-    required this.name,
     required this.explain,
   });
 
   final String explain;
   final String imageUrl;
-  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +22,11 @@ class HeaderContent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(AppDimens.borderRadius),
+                borderRadius:
+                    BorderRadius.circular(AppDimens.borderLargeRadius),
                 child: Image.network(
                   imageUrl,
-                  width: AppDimens.iconXXXLarge,
+                  height: AppDimens.iconXXXLarge,
                   fit: BoxFit.cover,
                 ),
               ),

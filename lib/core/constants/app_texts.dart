@@ -4,6 +4,8 @@ class AppTexts {
 
   static const String homePageButton = "Geçmiş Dönüşümlerim";
   static const String detailPageButton = "Dönüştür";
+  static const String congratsPageTitle = "Tebrikler";
+  static const String congratsButtonTitle = "Ana Menüye Dön";
   static const String ecoPoint = "Eko Puan";
   static const String savingPoint = "CO₂ Kazanç";
   static const String rePoint = "Dönüşüm";
