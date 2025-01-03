@@ -43,13 +43,12 @@ class _CongratsText extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.marginMedium),
       child: Align(
         child: Text(
-          '',
-          //'${RecycleRepository().recycleItems[id].name} ${'congrats_title_one'.tr()} $waste ${'congrats_title_two'.tr()} ${RecycleRepository().recycleItems[id].carbonRatio} ${'congrats_title_three'.tr()} ${RecycleRepository().recycleItems[id].persentage} ${'congrats_title_four'.tr()}',
-          textAlign: TextAlign.justify,
-          style: const TextStyle(
+          'explain',
+          style: TextStyle(
             fontSize: AppDimens.fontMedium,
-            color: AppColors.accentBlue200,
+            color: AppColors.textSecondary,
           ),
+          textAlign: TextAlign.start,
         ),
       ),
     );

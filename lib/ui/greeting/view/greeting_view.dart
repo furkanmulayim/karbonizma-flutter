@@ -23,14 +23,11 @@ class _GreetingViewState extends State<GreetingView> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text('Greeting')),
-        body: _GreetingBody(id: widget.id, waste: widget.waste));
+    return Scaffold(body: _GreetingBody(id: widget.id, waste: widget.waste));
   }
 }
 
@@ -55,7 +52,7 @@ class _GreetingBody extends StatelessWidget {
             waste: waste,
           ),
           HeightBox(
-            h: AppDimens.paddingXXLarge,
+            h: AppDimens.iconXLarge,
           ),
           NormalButton(
               onClick: () {

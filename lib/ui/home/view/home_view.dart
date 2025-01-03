@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:karbonizma/common/data/model/statis_model.dart';
-import 'package:karbonizma/common/data/model/recycle_model.dart';
+import 'package:karbonizma/common/data/model/statis/statis_model.dart';
+import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
@@ -12,7 +12,7 @@ import 'package:karbonizma/core/widgets/app_bars/flat_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
-import 'package:karbonizma/ui/detail/bloc/statis_cubit.dart';
+import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 
 part '../widgets/drawer.dart';
 part '../widgets/header_container.dart';

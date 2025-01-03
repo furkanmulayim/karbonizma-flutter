@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/foundation.dart';
-import 'package:karbonizma/common/data/model/statis_model.dart';
+import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/repository/statis_repository.dart';
 
 class StatisCubit extends Cubit<StatisModel> {
@@ -15,18 +14,16 @@ class StatisCubit extends Cubit<StatisModel> {
     required int co2Point,
     required int totalPoint,
   }) async {
-    await _repository.updateHistory(
+    await _repository.updateStatis(
       ecoPoints: ecoPoints,
       co2Point: co2Point,
       totalPoint: totalPoint,
     );
-    debugPrint('updateHistory calisti');
-    emit(await _repository.getHistory());
+    emit(await _repository.getStatis());
   }
 
+  // Puanları getirme işlemi
   Future<void> loadHistory() async {
-    debugPrint('loadHistory calisti');
-
-    emit(await _repository.getHistory());
+    emit(await _repository.getStatis());
   }
 }

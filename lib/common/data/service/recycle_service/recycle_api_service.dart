@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:karbonizma/common/data/service/api_constants.dart';
 import 'dart:convert';
-import 'package:karbonizma/common/data/model/recycle_model.dart';
+import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 
 class RecycleApiService {
   final Dio _dio = Dio();

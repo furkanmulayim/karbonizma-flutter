@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:go_router/go_router.dart';
-import 'package:karbonizma/common/data/model/recycle_model.dart';
+import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
+import 'package:karbonizma/common/data/model/history/history_model.dart';
+import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
@@ -13,9 +15,9 @@ import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
-import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
+import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
-import 'package:karbonizma/ui/detail/bloc/statis_cubit.dart';
+import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
@@ -34,6 +36,12 @@ class _DetailViewState extends State<DetailView> {
   late final CarbonBloc homeBloc;
 
   @override
+  void dispose() {
+    homeBloc.close();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     homeBloc = CarbonBloc(
@@ -43,12 +51,6 @@ class _DetailViewState extends State<DetailView> {
       id: widget.id,
     );
     homeBloc.add(CarbonInitialEventById());
-  }
-
-  @override
-  void dispose() {
-    homeBloc.close();
-    super.dispose();
   }
 
   Widget _buildBody(CarbonState state) {
@@ -73,7 +75,6 @@ class _DetailViewState extends State<DetailView> {
           if (state is CarbonLoadingSuccessStateById) {
             appBarTitle = state.waste.name;
           }
-
           return Scaffold(
             appBar: BackAppBar(
               text: appBarTitle,
@@ -96,12 +97,12 @@ class _DetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WasteCubit detailCubit = context.read<WasteCubit>();
-    final StatisCubit historyCubit = context.read<StatisCubit>();
+    final WasteCubit wasteCubit = context.read<WasteCubit>();
+    final StatisCubit statisCubit = context.read<StatisCubit>();
+    final HistoryBloc historyBloc = context.read<HistoryBloc>();
 
     int pers;
     int rat;
-
     return Center(
       child: Column(
         children: [
@@ -109,8 +110,8 @@ class _DetailBody extends StatelessWidget {
           HeaderTitle(title: AppTexts.detailPageCarbonTitles),
           BlocBuilder<WasteCubit, int>(
             builder: (context, state) {
-              pers = detailCubit.calcPersentageValue(item.persentage);
-              rat = detailCubit.calcPersentageValue(item.carbonRatio);
+              pers = wasteCubit.calcPersentageValue(item.persentage);
+              rat = wasteCubit.calcPersentageValue(item.carbonRatio);
               return Column(
                 children: [
                   _CarbonContent(
@@ -119,15 +120,23 @@ class _DetailBody extends StatelessWidget {
                   ),
                   _WasteWeight(
                       stater: state.toString(),
-                      increaseWasteGram: detailCubit.increase,
-                      decreaseWasteGram: detailCubit.decrease),
+                      increaseWasteGram: wasteCubit.increase,
+                      decreaseWasteGram: wasteCubit.decrease),
                   NormalButton(
                     onClick: () {
-                      historyCubit.increasePoints(
+                      statisCubit.increasePoints(
                         ecoPoints: pers,
                         co2Point: rat,
                         totalPoint: 1,
                       );
+                      historyBloc.add(AddHistory(HistoryModel(
+                          id: item.id,
+                          name: item.name,
+                          image: item.image,
+                          topEcoPoints: pers,
+                          topCo2Points: rat,
+                          date: 'DATE')));
+
                       context.go('/congrats/${item.id}/$state');
                     },
                     text: '${item.name} ${AppTexts.detailPageButton}',

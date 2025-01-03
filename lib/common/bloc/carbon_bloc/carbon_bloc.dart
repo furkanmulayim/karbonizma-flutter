@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:karbonizma/common/data/model/recycle_model.dart';
+import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
 import 'package:meta/meta.dart';
 

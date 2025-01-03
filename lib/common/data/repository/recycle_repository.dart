@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:karbonizma/common/data/model/recycle_model.dart';
+import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 
 class RecycleRepository {
@@ -14,7 +14,7 @@ class RecycleRepository {
       final box = await Hive.openBox<RecycleModel>(hiveBoxName);
       // hive veri var mı
       if (box.isNotEmpty) {
-        debugPrint('Veriler Hive\'dan yüklendi.');
+        debugPrint('RecycleRepository: box.isNotEmpty List');
         return box.values.toList();
       }
       // hivede yoksa apiden çek
@@ -22,11 +22,10 @@ class RecycleRepository {
 
       // hivea kaydet
       await box.addAll(waste);
-      debugPrint('Veriler API\'den yüklendi ve Hive\'a kaydedildi.');
-
+        debugPrint('RecycleRepository: hivea kaydet');
       return waste;
     } catch (e) {
-      debugPrint('Hata oluştu: $e'); // Hata
+        debugPrint('RecycleRepository: hivea hatası: -> $e');
       rethrow;
     }
   }
