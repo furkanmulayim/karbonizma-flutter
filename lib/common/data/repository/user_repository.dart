@@ -32,21 +32,20 @@ class RecycleRepository {
   }
 
   Future<RecycleModel> getWasteById(int id) async {
-  try {
-    final box = await Hive.openBox<RecycleModel>(hiveBoxName);
+    try {
+      final box = await Hive.openBox<RecycleModel>(hiveBoxName);
 
-    // Hive'dan veriyi kontrol et
-    final recycleItem = box.values.firstWhere(
-      (item) => item.id == id,
-      orElse: () => throw Exception('Veri bulunamadı! ID: $id'), // Hata fırlat
-    );
+      // Hive'dan veriyi kontrol et
+      final recycleItem = box.values.firstWhere(
+        (item) => item.id == id,
+        orElse: () => throw Exception('Veri bulunamadı! ID: $id'),
+      );
 
-    // Eğer recycleItem bulunduysa, onu döndür
-    return recycleItem;
-
-  } catch (e) {
-    // Hata durumunda yeniden fırlatma
-    throw Exception('Hata oluştu: $e');
+      // Eğer recycleItem bulunduysa, onu döndür
+      return recycleItem;
+    } catch (e) {
+      // Hata durumunda yeniden fırlatma
+      throw Exception('Hata oluştu: $e');
+    }
   }
-}
 }

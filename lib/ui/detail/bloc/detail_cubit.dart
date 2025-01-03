@@ -18,12 +18,12 @@ class DetailCubit extends Cubit<int> {
   }
 
   int calcPersentageValue(int persentage) {
-    int percent = persentage * state;
+    int percent = ((persentage * state) / 10 ).round();
     return percent;
   }
 
   int calcRatioValue(int ratio) {
-    int rat = ratio * state;
+    int rat = ((ratio * state) / 10 ).round();
     return rat;
   }
 }

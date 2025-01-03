@@ -1,27 +1,44 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/history_model.dart';
 
 class HistoryRepository {
   final String hiveBoxName = 'historyBox';
 
-  Future<void> updateHistory(
-      int id, int ecoPoints, int co2Point, int totalPoint) async {
-    final box = await Hive.openBox<HistoryModel>(hiveBoxName);
+  // Hive box'u açma ve veriyi kontrol etme
+  Future<Box<HistoryModel>> _openBox() async {
+    var box = await Hive.openBox<HistoryModel>(hiveBoxName);
 
-    final data = box.values.firstWhere((history) => history.id == 0);
-
-    data
-      ..ecoPoints += ecoPoints
-      ..co2Point += co2Point
-      ..totalPoint += totalPoint
-      ..save();
+    // Box boşsa, başlangıç verisini oluştur ve kaydet
+    if (box.isEmpty) {
+      debugPrint('Box boş, veriler sıfırlanıyor.');
+      await box.put(0, HistoryModel(ecoPoints: 0, co2Point: 0, totalPoint: 0));
+    }
+    return box;
   }
 
-  Future<List<HistoryModel>> getAllHistories() async {
-    final box = await Hive.openBox<HistoryModel>(hiveBoxName);
-    if (box.isEmpty) {
-      throw Exception("----> History Hive Boş");
-    }
-    return box.values.toList();
+  // Veritabanındaki mevcut kaydı al
+  Future<HistoryModel> getHistory() async {
+    final box = await _openBox();
+    return box.get(0)!; // İlk kaydı al (veya varsayılan 0 değerini döndür)
+  }
+
+  // Puanları güncelle
+  Future<void> updateHistory({
+    required int ecoPoints,
+    required int co2Point,
+    required int totalPoint,
+  }) async {
+    final box = await _openBox();
+    final history = box.get(0)!;
+
+    final updatedHistory = HistoryModel(
+      ecoPoints: (history.ecoPoints + ecoPoints),
+      co2Point: history.co2Point + co2Point,
+      totalPoint: history.totalPoint + totalPoint,
+    );
+
+    // Yeni veriyi kaydet
+    await box.put(0, updatedHistory);
   }
 }

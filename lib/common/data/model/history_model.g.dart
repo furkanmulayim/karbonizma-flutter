@@ -17,24 +17,21 @@ class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return HistoryModel(
-      id: fields[0] as int,
-      ecoPoints: fields[1] as int,
-      co2Point: fields[2] as int,
-      totalPoint: fields[3] as int,
+      ecoPoints: fields[0] as int,
+      co2Point: fields[1] as int,
+      totalPoint: fields[2] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, HistoryModel obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.ecoPoints)
-      ..writeByte(2)
-      ..write(obj.co2Point)
       ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.ecoPoints)
+      ..writeByte(1)
+      ..write(obj.co2Point)
+      ..writeByte(2)
       ..write(obj.totalPoint);
   }
 

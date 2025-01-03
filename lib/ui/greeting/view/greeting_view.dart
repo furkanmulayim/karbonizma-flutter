@@ -21,13 +21,9 @@ class GreetingView extends StatefulWidget {
 
 class _GreetingViewState extends State<GreetingView> {
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
+    
   }
 
   @override

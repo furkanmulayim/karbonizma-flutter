@@ -68,7 +68,7 @@ class _NumericBox extends StatelessWidget {
           _GaugeIndicator(value: data),
           HeightBox(h: AppDimens.paddingXSmall),
           Text(
-            '${data / 10}',
+            data.toString(),
             style: const TextStyle(
                 color: AppColors.textSecondary,
                 fontSize: AppDimens.fontxMedium),
@@ -101,7 +101,7 @@ class _GaugeIndicator extends StatelessWidget {
                 axis: GaugeAxis(
                   /// Provide the [min] and [max] value for the [value] argument.
                   min: 0,
-                  max: 1000,
+                  max: 100,
 
                   /// Render the gauge as a 180-degree arc.
                   degrees: 200,

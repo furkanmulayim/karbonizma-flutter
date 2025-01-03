@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:karbonizma/common/data/model/history_model.dart';
 import 'package:karbonizma/common/data/model/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/user_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
@@ -11,6 +12,7 @@ import 'package:karbonizma/core/widgets/app_bars/flat_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
+import 'package:karbonizma/ui/detail/bloc/history_cubit.dart';
 
 part '../widgets/drawer.dart';
 part '../widgets/header_container.dart';
@@ -30,8 +32,10 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     homeBloc = CarbonBloc(
-        recycleRepo: RecycleRepository(apiService: RecycleApiService()));
+      recycleRepo: RecycleRepository(apiService: RecycleApiService()),
+    );
     homeBloc.add(CarbonInitialEvent());
+    context.read<HistoryCubit>().loadHistory();
   }
 
   @override
@@ -59,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
               case CarbonLoadingSuccessState(): //succes
                 return _MenuBody(items: state.waste);
               case CarbonErrorState(): //error
-                return Center(child: Text('ERROR!!'));
+                return Center(child: Text('HOME ERROR!!'));
               default: //default
                 return Center(child: CircularProgressIndicator());
             }
@@ -80,10 +84,19 @@ class _MenuBody extends StatelessWidget {
       child: Column(
         children: [
           HeaderTitle(title: AppTexts.homePagePointTitles),
-          _HeaderContainers(
-            eco: '12',
-            co2: '100',
-            re: '32',
+          BlocBuilder<HistoryCubit, HistoryModel>(
+            builder: (context, state) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _HeaderContainers(
+                    eco: state.ecoPoints.toString(),
+                    co2: state.co2Point.toString(),
+                    re: state.totalPoint.toString(),
+                  ),
+                ],
+              );
+            },
           ),
           NormalButton(
             onClick: () {},

@@ -15,6 +15,7 @@ import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
+import 'package:karbonizma/ui/detail/bloc/history_cubit.dart';
 
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
@@ -36,17 +37,36 @@ class _DetailViewState extends State<DetailView> {
   void initState() {
     super.initState();
     homeBloc = CarbonBloc(
-        recycleRepo: RecycleRepository(
-          apiService: RecycleApiService(),
-        ),
-        id: widget.id);
+      recycleRepo: RecycleRepository(
+        apiService: RecycleApiService(),
+      ),
+      id: widget.id,
+    );
     homeBloc.add(CarbonInitialEventById());
+  }
+
+  @override
+  void dispose() {
+    homeBloc.close();
+    super.dispose();
+  }
+
+  Widget _buildBody(CarbonState state) {
+    if (state is CarbonLoadingState) {
+      return const Center(child: CircularProgressIndicator());
+    } else if (state is CarbonLoadingSuccessStateById) {
+      return _DetailBody(item: state.waste);
+    } else if (state is CarbonErrorState) {
+      return const Center(child: Text('ERROR!!'));
+    } else {
+      return const Center(child: CircularProgressIndicator());
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => homeBloc,
+      create: (context) => homeBloc, // homeBloc burada sağlanıyor
       child: BlocBuilder<CarbonBloc, CarbonState>(
         builder: (context, state) {
           String appBarTitle = '';
@@ -67,18 +87,6 @@ class _DetailViewState extends State<DetailView> {
       ),
     );
   }
-
-  Widget _buildBody(CarbonState state) {
-    if (state is CarbonLoadingState) {
-      return const Center(child: CircularProgressIndicator());
-    } else if (state is CarbonLoadingSuccessStateById) {
-      return _DetailBody(item: state.waste);
-    } else if (state is CarbonErrorState) {
-      return const Center(child: Text('ERROR!!'));
-    } else {
-      return const Center(child: CircularProgressIndicator());
-    }
-  }
 }
 
 class _DetailBody extends StatelessWidget {
@@ -88,6 +96,12 @@ class _DetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DetailCubit detailCubit = context.read<DetailCubit>();
+    final HistoryCubit historyCubit = context.read<HistoryCubit>();
+
+    int pers;
+    int rat;
+
     return Center(
       child: Column(
         children: [
@@ -95,22 +109,25 @@ class _DetailBody extends StatelessWidget {
           HeaderTitle(title: AppTexts.detailPageCarbonTitles),
           BlocBuilder<DetailCubit, int>(
             builder: (context, state) {
+              pers = detailCubit.calcPersentageValue(item.persentage);
+              rat = detailCubit.calcPersentageValue(item.carbonRatio);
               return Column(
                 children: [
                   _CarbonContent(
-                    persentage: context
-                        .read<DetailCubit>()
-                        .calcPersentageValue(item.persentage),
-                    ratio: context
-                        .read<DetailCubit>()
-                        .calcPersentageValue(item.carbonRatio),
+                    persentage: pers,
+                    ratio: rat,
                   ),
                   _WasteWeight(
                       stater: state.toString(),
-                      increaseWasteGram: context.read<DetailCubit>().increase,
-                      decreaseWasteGram: context.read<DetailCubit>().decrease),
+                      increaseWasteGram: detailCubit.increase,
+                      decreaseWasteGram: detailCubit.decrease),
                   NormalButton(
                     onClick: () {
+                      historyCubit.increasePoints(
+                        ecoPoints: pers,
+                        co2Point: rat,
+                        totalPoint: 1,
+                      );
                       context.go('/congrats/${item.id}/$state');
                     },
                     text: '${item.name} ${AppTexts.detailPageButton}',
