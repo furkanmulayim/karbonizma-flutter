@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:karbonizma/common/data/model/history_model.dart';
-import 'package:karbonizma/common/data/repository/history_repository.dart';
+import 'package:karbonizma/common/data/model/statis_model.dart';
+import 'package:karbonizma/common/data/repository/statis_repository.dart';
 
-class HistoryCubit extends Cubit<HistoryModel> {
-  final HistoryRepository _repository;
+class StatisCubit extends Cubit<StatisModel> {
+  final StatisRepository _repository;
 
-  HistoryCubit(this._repository)
-      : super(HistoryModel(ecoPoints: 0, co2Point: 0, totalPoint: 0));
+  StatisCubit(this._repository)
+      : super(StatisModel(ecoPoints: 0, co2Point: 0, totalPoint: 0));
 
   // Puanları artırma işlemi
   Future<void> increasePoints({
@@ -21,7 +21,7 @@ class HistoryCubit extends Cubit<HistoryModel> {
       totalPoint: totalPoint,
     );
     debugPrint('updateHistory calisti');
-    emit(await _repository.getHistory()); 
+    emit(await _repository.getHistory());
   }
 
   Future<void> loadHistory() async {

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/data/model/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/user_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -15,7 +15,7 @@ import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/ui/detail/bloc/detail_cubit.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
-import 'package:karbonizma/ui/detail/bloc/history_cubit.dart';
+import 'package:karbonizma/ui/detail/bloc/statis_cubit.dart';
 
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
@@ -96,8 +96,8 @@ class _DetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DetailCubit detailCubit = context.read<DetailCubit>();
-    final HistoryCubit historyCubit = context.read<HistoryCubit>();
+    final WasteCubit detailCubit = context.read<WasteCubit>();
+    final StatisCubit historyCubit = context.read<StatisCubit>();
 
     int pers;
     int rat;
@@ -107,7 +107,7 @@ class _DetailBody extends StatelessWidget {
         children: [
           HeaderContent(imageUrl: item.image, explain: item.explain),
           HeaderTitle(title: AppTexts.detailPageCarbonTitles),
-          BlocBuilder<DetailCubit, int>(
+          BlocBuilder<WasteCubit, int>(
             builder: (context, state) {
               pers = detailCubit.calcPersentageValue(item.persentage);
               rat = detailCubit.calcPersentageValue(item.carbonRatio);

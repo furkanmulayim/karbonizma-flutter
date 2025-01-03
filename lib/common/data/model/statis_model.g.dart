@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'history_model.dart';
+part of 'statis_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
+class StatisModelAdapter extends TypeAdapter<StatisModel> {
   @override
   final int typeId = 1;
 
   @override
-  HistoryModel read(BinaryReader reader) {
+  StatisModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return HistoryModel(
+    return StatisModel(
       ecoPoints: fields[0] as int,
       co2Point: fields[1] as int,
       totalPoint: fields[2] as int,
@@ -24,7 +24,7 @@ class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
   }
 
   @override
-  void write(BinaryWriter writer, HistoryModel obj) {
+  void write(BinaryWriter writer, StatisModel obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -41,7 +41,7 @@ class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HistoryModelAdapter &&
+      other is StatisModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -1,10 +1,9 @@
 import 'package:hive/hive.dart';
 
-part 'history_model.g.dart'; // Hive generator
+part 'statis_model.g.dart'; 
 
 @HiveType(typeId: 1)
-class HistoryModel extends HiveObject {
-
+class StatisModel extends HiveObject {
   @HiveField(0)
   int ecoPoints;
 
@@ -14,9 +13,8 @@ class HistoryModel extends HiveObject {
   @HiveField(2)
   int totalPoint;
 
-  HistoryModel(
-      {
-      required this.ecoPoints,
+  StatisModel(
+      {required this.ecoPoints,
       required this.co2Point,
       required this.totalPoint});
 }
