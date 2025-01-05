@@ -10,6 +10,7 @@ import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/flat_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
+import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
 import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';

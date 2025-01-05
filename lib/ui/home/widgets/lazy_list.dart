@@ -8,33 +8,47 @@ class _LazyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: AppDimens.paddingSmall),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppDimens.paddingMedium,
+        horizontal: AppDimens.paddingMedium,
+      ),
       child: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundColor: AppColors.accentBlue100,
-              child: Text(
-                (item.id + 1).toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: AppDimens.fontLarge,
-                  color: AppColors.textWhite,
-                ),
-              ),
-            ),
-            title: Text(
-              item.name,
-              style: TextStyle(
-                fontSize: AppDimens.fontMedium,
-                color: AppColors.accentBlue1000,
-              ),
-            ),
+          return GestureDetector(
             onTap: () {
-              context.go('/detail/${item.id}');
+              context.go('/detail/${item.id}'); // Git yönlendirme
             },
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              color: Colors.transparent, // Tıklama alanını genişletmek için
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(AppDimens.borderRadius)),
+                    child: Image.network(
+                      item.image,
+                      height: AppDimens.iconXXLarge,
+                      width: AppDimens.iconXXLarge, // Genişlik eklenebilir
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  WidthBox(),
+                  Expanded(
+                    child: Text(
+                      item.name,
+                      style: TextStyle(
+                        fontSize: AppDimens.fontMedium,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.accentBlue300,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

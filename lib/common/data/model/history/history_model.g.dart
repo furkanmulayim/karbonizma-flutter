@@ -23,13 +23,14 @@ class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
       topEcoPoints: fields[3] as int,
       topCo2Points: fields[4] as int,
       date: fields[5] as String,
+      kg: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, HistoryModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class HistoryModelAdapter extends TypeAdapter<HistoryModel> {
       ..writeByte(4)
       ..write(obj.topCo2Points)
       ..writeByte(5)
-      ..write(obj.date);
+      ..write(obj.date)
+      ..writeByte(6)
+      ..write(obj.kg);
   }
 
   @override

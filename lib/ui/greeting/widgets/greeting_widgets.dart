@@ -23,7 +23,7 @@ class _CongratsHeader extends StatelessWidget {
           style: const TextStyle(
             fontSize: AppDimens.fontExtraLarge,
             fontWeight: FontWeight.bold,
-            color: AppColors.accentBlue900,
+            color: AppColors.accentBlue100,
           ),
         ),
       ),
@@ -32,9 +32,9 @@ class _CongratsHeader extends StatelessWidget {
 }
 
 class _CongratsText extends StatelessWidget {
-  const _CongratsText({required this.id, required this.waste});
+  const _CongratsText({required this.name, required this.waste});
 
-  final int id;
+  final String name;
   final int waste;
 
   @override
@@ -43,12 +43,12 @@ class _CongratsText extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppDimens.marginMedium),
       child: Align(
         child: Text(
-          'explain',
+          '${waste.toString()}${AppTexts.detailWeight} ${name} ${AppTexts.congratsEnterTitle}',
           style: TextStyle(
             fontSize: AppDimens.fontMedium,
             color: AppColors.textSecondary,
           ),
-          textAlign: TextAlign.start,
+          textAlign: TextAlign.center,
         ),
       ),
     );

@@ -22,6 +22,9 @@ class HistoryModel extends HiveObject {
   @HiveField(5)
   String date;
 
+  @HiveField(6)
+  String kg;
+
   HistoryModel({
     required this.id,
     required this.name,
@@ -29,5 +32,6 @@ class HistoryModel extends HiveObject {
     required this.topEcoPoints,
     required this.topCo2Points,
     required this.date,
+    required this.kg,
   });
 }

@@ -10,9 +10,9 @@ import 'package:lottie/lottie.dart';
 part '../widgets/greeting_widgets.dart';
 
 class GreetingView extends StatefulWidget {
-  const GreetingView({super.key, required this.id, required this.waste});
+  const GreetingView({super.key, required this.name, required this.waste});
 
-  final int id;
+  final String name;
   final int waste;
 
   @override
@@ -27,14 +27,14 @@ class _GreetingViewState extends State<GreetingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _GreetingBody(id: widget.id, waste: widget.waste));
+    return Scaffold(body: _GreetingBody(name: widget.name, waste: widget.waste));
   }
 }
 
 class _GreetingBody extends StatelessWidget {
-  const _GreetingBody({required this.id, required this.waste});
+  const _GreetingBody({required this.name, required this.waste});
 
-  final int id;
+  final String name;
   final int waste;
 
   @override
@@ -48,7 +48,7 @@ class _GreetingBody extends StatelessWidget {
           _CongratsHeader(),
           HeightBox(),
           _CongratsText(
-            id: id,
+            name: name,
             waste: waste,
           ),
           HeightBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
@@ -111,7 +112,7 @@ class _DetailBody extends StatelessWidget {
           BlocBuilder<WasteCubit, int>(
             builder: (context, state) {
               pers = wasteCubit.calcPersentageValue(item.persentage);
-              rat = wasteCubit.calcPersentageValue(item.carbonRatio);
+              rat = wasteCubit.calcRatioValue(item.carbonRatio);
               return Column(
                 children: [
                   _CarbonContent(
@@ -124,20 +125,28 @@ class _DetailBody extends StatelessWidget {
                       decreaseWasteGram: wasteCubit.decrease),
                   NormalButton(
                     onClick: () {
+                      DateTime now = DateTime.now();
                       statisCubit.increasePoints(
                         ecoPoints: pers,
                         co2Point: rat,
                         totalPoint: 1,
                       );
-                      historyBloc.add(AddHistory(HistoryModel(
-                          id: item.id,
-                          name: item.name,
-                          image: item.image,
-                          topEcoPoints: pers,
-                          topCo2Points: rat,
-                          date: 'DATE')));
+                      historyBloc.add(
+                        AddHistory(
+                          HistoryModel(
+                            id: item.id,
+                            name: item.name,
+                            image: item.image,
+                            topEcoPoints: pers,
+                            topCo2Points: rat,
+                            date: DateFormat("d MMMM yyyy, HH:mm", "tr_TR")
+                                .format(now),
+                            kg: state.toString(),
+                          ),
+                        ),
+                      );
 
-                      context.go('/congrats/${item.id}/$state');
+                      context.go('/congrats/${item.name}/$state');
                     },
                     text: '${item.name} ${AppTexts.detailPageButton}',
                     icon: Icon(Icons.recycling, color: AppColors.textWhite),

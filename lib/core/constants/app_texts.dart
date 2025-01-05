@@ -6,6 +6,8 @@ class AppTexts {
   static const String detailPageButton = "Dönüştür";
   static const String congratsPageTitle = "Tebrikler";
   static const String congratsButtonTitle = "Ana Menüye Dön";
+  static const String congratsEnterTitle =
+      "atığı dönüştürdünüz. Doğayı koruduğunuz için teşekkürler";
   static const String ecoPoint = "Eko Puan";
   static const String savingPoint = "CO₂ Kazanç";
   static const String rePoint = "Dönüşüm";

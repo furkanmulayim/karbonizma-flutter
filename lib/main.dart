@@ -14,6 +14,7 @@ import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:karbonizma/core/routes/app_router.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,8 @@ void main() async {
   Hive.registerAdapter(StatisModelAdapter());
   Hive.registerAdapter(RecycleModelAdapter());
   Hive.registerAdapter(HistoryModelAdapter());
+
+  await initializeDateFormatting('tr_TR', null);
 
   runApp(MyApp());
 }

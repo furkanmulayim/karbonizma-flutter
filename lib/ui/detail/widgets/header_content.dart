@@ -26,7 +26,8 @@ class HeaderContent extends StatelessWidget {
                     BorderRadius.circular(AppDimens.borderLargeRadius),
                 child: Image.network(
                   imageUrl,
-                  height: AppDimens.iconXXXLarge,
+                  width: AppDimens.iconXXXLarge,
+                  height: AppDimens.iconXXXLarge * 3 / 2.5,
                   fit: BoxFit.cover,
                 ),
               ),

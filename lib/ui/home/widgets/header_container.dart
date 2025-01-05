@@ -71,7 +71,7 @@ class _NumericBox extends StatelessWidget {
         children: [
           Image.asset(
             icon,
-            width: AppDimens.iconLarge,
+            width: AppDimens.iconXLarge,
           ),
           SizedBox(
             height: 5,

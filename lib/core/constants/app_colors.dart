@@ -20,13 +20,13 @@ class AppColors {
   static const Color dividerColor = Color.fromARGB(255, 125, 125, 125);
 
   static const Color accentGreen = Color.fromARGB(181, 201, 255, 109);
-  static const Color accentGreenBackground = Color.fromARGB(235, 237, 255, 238);
+  static const Color accentGreenBackground = Color(0xEBE0FAE1);
 
-  static const Color accentBlue1000 = Color.fromARGB(255, 23, 61, 35);
-  static const Color accentBlue900 = Color.fromARGB(255, 46, 88, 59);
-  static const Color accentBlue500 = Color.fromARGB(255, 71, 111, 78);
-  static const Color accentBlue300 = Color.fromARGB(255, 66, 120, 92);
-  static const Color accentBlue200 = Color.fromARGB(172, 156, 203, 163);
-  static const Color accentBlue100 = Color.fromARGB(255, 83, 173, 108);
-  static const Color accentBlue50 = Color.fromARGB(255, 113, 210, 140);
+  static const Color accentBlue1000 = Color(0xFF173D23);
+  static const Color accentBlue900 = Color(0xFF2E583B);
+  static const Color accentBlue500 = Color(0xFF476F4E);
+  static const Color accentBlue300 = Color(0xFF42785C);
+  static const Color accentBlue200 = Color(0xAC9CCBA3);
+  static const Color accentBlue100 = Color(0xFF53AD6C);
+  static const Color accentBlue50 = Color(0xFF71D28C);
 }

@@ -10,7 +10,7 @@ import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 
-part '../history/waste_card.dart';
+part '../widgets/waste_card.dart';
 
 class HistoryView extends StatefulWidget {
   const HistoryView({super.key});
@@ -70,11 +70,17 @@ class WasteList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: wasteItems.length,
-      itemBuilder: (context, index) {
-        return _WasteCard(item: wasteItems[index]);
-      },
-    );
+    if (wasteItems.isNotEmpty) {
+      return ListView.builder(
+        itemCount: wasteItems.length,
+        itemBuilder: (context, index) {
+          return _WasteCard(item: wasteItems[index]);
+        },
+      );
+    } else {
+      return Center(
+        child: Text("no data"),
+      );
+    }
   }
 }

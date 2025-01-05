@@ -1,4 +1,4 @@
-part of '../history/history_view.dart';
+part of '../view/history_view.dart';
 
 class _WasteCard extends StatelessWidget {
   const _WasteCard({required this.item});
@@ -31,10 +31,10 @@ class _WasteCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: Text(
-                '${item.id} KG',
+                '${item.kg} KG',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: AppDimens.fontMedium,
+                  fontSize: AppDimens.fontSmall,
                   color: AppColors.textWhite,
                 ),
               ),
@@ -52,7 +52,7 @@ class _WasteCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '12 Haziran 2025',
+            item.date,
             style: const TextStyle(
               fontSize: AppDimens.fontsMedium,
               color: AppColors.accentBlue300,
@@ -61,7 +61,7 @@ class _WasteCard extends StatelessWidget {
           Text(
             item.name,
             style: const TextStyle(
-                fontSize: AppDimens.fontLarge,
+                fontSize: AppDimens.fontMedium,
                 fontWeight: FontWeight.w500,
                 color: AppColors.accentBlue300),
           ),
@@ -74,7 +74,7 @@ class _WasteCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        _buildInfoBox(Icons.attach_money, '+${item.topCo2Points.toString()}'),
+        _buildInfoBox(Icons.attach_money, '+${item.topEcoPoints}'),
         WidthBox(w: AppDimens.paddingSmall),
         _buildInfoBox(Icons.eco, '%${item.topCo2Points.toString()}'),
       ],
@@ -84,8 +84,8 @@ class _WasteCard extends StatelessWidget {
   Widget _buildInfoBox(IconData icon, String value) {
     return Container(
       padding: const EdgeInsets.symmetric(
-          horizontal: AppDimens.paddingSmall,
-          vertical: AppDimens.paddingXSmall),
+          horizontal: AppDimens.paddingXSmall,
+          vertical: AppDimens.paddingXXSmall),
       decoration: BoxDecoration(
         color: AppColors.accentGreenBackground,
         borderRadius: BorderRadius.circular(AppDimens.borderRadius),
@@ -102,7 +102,7 @@ class _WasteCard extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-              fontSize: AppDimens.fontMedium,
+              fontSize: AppDimens.fontSmall,
               fontWeight: FontWeight.bold,
               color: AppColors.accentBlue100,
             ),
