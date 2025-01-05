@@ -23,7 +23,7 @@ class _WasteCard extends StatelessWidget {
           Container(
             width: AppDimens.iconXsXLarge,
             decoration: BoxDecoration(
-              color: AppColors.accentBlue100,
+              color: AppColors.accentGreen100,
               borderRadius: const BorderRadius.vertical(
                 bottom: Radius.circular(AppDimens.borderLargeRadius),
               ),
@@ -55,7 +55,7 @@ class _WasteCard extends StatelessWidget {
             item.date,
             style: const TextStyle(
               fontSize: AppDimens.fontsMedium,
-              color: AppColors.accentBlue300,
+              color: AppColors.accentGreen300,
             ),
           ),
           Text(
@@ -63,7 +63,7 @@ class _WasteCard extends StatelessWidget {
             style: const TextStyle(
                 fontSize: AppDimens.fontMedium,
                 fontWeight: FontWeight.w500,
-                color: AppColors.accentBlue300),
+                color: AppColors.accentGreen300),
           ),
         ],
       ),
@@ -96,7 +96,7 @@ class _WasteCard extends StatelessWidget {
           Icon(
             icon,
             size: AppDimens.iconMedium,
-            color: AppColors.accentBlue100,
+            color: AppColors.accentGreen100,
           ),
           HeightBox(h: AppDimens.marginxSmall),
           Text(
@@ -104,7 +104,7 @@ class _WasteCard extends StatelessWidget {
             style: const TextStyle(
               fontSize: AppDimens.fontSmall,
               fontWeight: FontWeight.bold,
-              color: AppColors.accentBlue100,
+              color: AppColors.accentGreen100,
             ),
           ),
         ],

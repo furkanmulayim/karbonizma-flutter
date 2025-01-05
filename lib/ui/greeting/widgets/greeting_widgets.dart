@@ -23,7 +23,7 @@ class _CongratsHeader extends StatelessWidget {
           style: const TextStyle(
             fontSize: AppDimens.fontExtraLarge,
             fontWeight: FontWeight.bold,
-            color: AppColors.accentBlue100,
+            color: AppColors.accentGreen100,
           ),
         ),
       ),

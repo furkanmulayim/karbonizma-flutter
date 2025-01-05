@@ -14,9 +14,9 @@ class FlatAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(text,
           style: TextStyle(
-            color: AppColors.accentBlue900,
+            color: AppColors.accentGreen900,
           )),
-      backgroundColor: AppColors.accentBlue200,
+      backgroundColor: AppColors.accentGreen200,
       centerTitle: true,
     );
   }

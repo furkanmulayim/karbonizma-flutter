@@ -4,10 +4,12 @@ import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
+import 'package:karbonizma/core/widgets/buttons/secondary_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:lottie/lottie.dart';
 
 part '../widgets/greeting_widgets.dart';
+part '../widgets/buttons.dart';
 
 class GreetingView extends StatefulWidget {
   const GreetingView({super.key, required this.name, required this.waste});
@@ -27,7 +29,8 @@ class _GreetingViewState extends State<GreetingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _GreetingBody(name: widget.name, waste: widget.waste));
+    return Scaffold(
+        body: _GreetingBody(name: widget.name, waste: widget.waste));
   }
 }
 
@@ -54,11 +57,7 @@ class _GreetingBody extends StatelessWidget {
           HeightBox(
             h: AppDimens.iconXLarge,
           ),
-          NormalButton(
-              onClick: () {
-                context.go('/');
-              },
-              text: AppTexts.congratsButtonTitle)
+          _ButtonsRow(),
         ],
       ),
     );

@@ -15,14 +15,14 @@ class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(text,
           style: TextStyle(
-            color: AppColors.accentBlue900,
+            color: AppColors.accentGreen900,
           )),
-      backgroundColor: AppColors.accentBlue200,
+      backgroundColor: AppColors.accentGreen200,
       centerTitle: true,
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back,
-          color: AppColors.accentBlue900,
+          color: AppColors.accentGreen900,
         ),
         onPressed: () {
           backClick();

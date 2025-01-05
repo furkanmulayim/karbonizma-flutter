@@ -50,7 +50,7 @@ class _WeightText extends StatelessWidget {
         style: TextStyle(
             fontSize: AppDimens.fontExtraLarge,
             fontWeight: FontWeight.bold,
-            color: AppColors.accentBlue900));
+            color: AppColors.accentGreen900));
   }
 }
 
@@ -69,7 +69,7 @@ class _RoundedButtton extends StatelessWidget {
       height: 40,
       child: FloatingActionButton(
         onPressed: onClick,
-        backgroundColor: AppColors.accentBlue100,
+        backgroundColor: AppColors.accentGreen100,
         shape: CircleBorder(),
         child: Icon(icom, color: AppColors.textWhite),
       ),

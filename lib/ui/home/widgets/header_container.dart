@@ -63,7 +63,7 @@ class _NumericBox extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: AppDimens.paddingMedium),
       padding: const EdgeInsets.all(AppDimens.paddingSmall),
       decoration: BoxDecoration(
-        color: AppColors.accentBlue200,
+        color: AppColors.accentGreen200,
         borderRadius: BorderRadius.circular(AppDimens.borderRadius),
       ),
       child: Column(
@@ -79,14 +79,14 @@ class _NumericBox extends StatelessWidget {
           Text(
             name,
             style: const TextStyle(
-                color: AppColors.accentBlue900,
+                color: AppColors.accentGreen900,
                 fontSize: AppDimens.fontsMedium),
           ),
           const SizedBox(height: 5),
           Text(
             data,
             style: const TextStyle(
-              color: AppColors.accentBlue900,
+              color: AppColors.accentGreen900,
               fontWeight: FontWeight.bold,
             ),
           ),

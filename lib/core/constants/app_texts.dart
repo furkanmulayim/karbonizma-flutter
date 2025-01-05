@@ -1,22 +1,23 @@
 class AppTexts {
-  // page names
-  static const String homeName = "Doğayı Koruyun!";
-
-  static const String homePageButton = "Geçmiş Dönüşümlerim";
-  static const String detailPageButton = "Dönüştür";
-  static const String congratsPageTitle = "Tebrikler";
-  static const String congratsButtonTitle = "Ana Menüye Dön";
+  static const String congratsButtonTitle = "Ana Menü";
   static const String congratsEnterTitle =
       "atığı dönüştürdünüz. Doğayı koruduğunuz için teşekkürler";
-  static const String ecoPoint = "Eko Puan";
-  static const String savingPoint = "CO₂ Kazanç";
-  static const String rePoint = "Dönüşüm";
-  static const String ecoPointIcon = 'assets/png/money.png';
-  static const String savingPointIcon = 'assets/png/footprint.png';
-  static const String rePointIcon = 'assets/png/recycle.png';
-  static const String homePageListTitle = "Geri Dönüştürülebilir Atıklar!";
-  static const String homePagePointTitles = "Puan İstatistikleri";
+
+  static const String congratsPageTitle = "Tebrikler";
+
+  static const String congrataHistoryPageButton = "Geçmiş";
+  static const String detailPageButton = "Dönüştür";
   static const String detailPageCarbonTitles = "Karbon İçeriği";
   static const String detailPageDetailsTitles = "Detayları";
   static const String detailWeight = " KG";
+  static const String ecoPoint = "Eko Puan";
+  static const String ecoPointIcon = 'assets/png/money.png';
+  static const String homeName = "Doğayı Koruyun!";
+  static const String homePageButton = "Geçmiş Dönüşümlerim";
+  static const String homePageListTitle = "Geri Dönüştürülebilir Atıklar!";
+  static const String homePagePointTitles = "Puan İstatistikleri";
+  static const String rePoint = "Dönüşüm";
+  static const String rePointIcon = 'assets/png/recycle.png';
+  static const String savingPoint = "CO₂ Kazanç";
+  static const String savingPointIcon = 'assets/png/footprint.png';
 }

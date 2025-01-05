@@ -42,7 +42,7 @@ class _LazyList extends StatelessWidget {
                       style: TextStyle(
                         fontSize: AppDimens.fontMedium,
                         fontWeight: FontWeight.w500,
-                        color: AppColors.accentBlue300,
+                        color: AppColors.accentGreen300,
                       ),
                     ),
                   ),

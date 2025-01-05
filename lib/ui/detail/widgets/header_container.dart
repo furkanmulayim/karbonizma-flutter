@@ -117,12 +117,12 @@ class _GaugeIndicator extends StatelessWidget {
                     borderRadius: 12,
                     width: 13,
                     height: 17,
-                    color: AppColors.accentBlue100,
+                    color: AppColors.accentGreen100,
                   ),
 
                   /// Define the progress bar (optional).
                   progressBar: const GaugeProgressBar.rounded(
-                    color: AppColors.accentBlue100,
+                    color: AppColors.accentGreen100,
                   ),
                 ),
               ),

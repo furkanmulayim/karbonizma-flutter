@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 
-class NormalButton extends StatelessWidget {
-  const NormalButton(
+class SecondaryButton extends StatelessWidget {
+  const SecondaryButton(
       {super.key, required this.onClick, required this.text, this.icon});
 
   final VoidCallback onClick;
@@ -22,7 +22,7 @@ class NormalButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onClick,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.accentGreen100,
+              backgroundColor: AppColors.accentGreen300,
               padding: const EdgeInsets.symmetric(
                 vertical: AppDimens.paddingXSmall, // Daha ince padding
               ),
@@ -44,7 +44,7 @@ class NormalButton extends StatelessWidget {
                   style: const TextStyle(
                     color: AppColors.textWhite,
                     fontWeight: FontWeight.bold,
-                    fontSize: AppDimens.fontxMedium,
+                    fontSize: AppDimens.fontxMedium, // Yazı boyutunu küçült
                   ),
                 ),
               ],
