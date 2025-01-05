@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 
 class StatisRepository {
-  final String hiveBoxName = 'historyBox';
+  final String hiveBoxName = 'StatisBox';
 
   // Hive box'u açma ve veriyi kontrol etme
   Future<Box<StatisModel>> _openBox() async {

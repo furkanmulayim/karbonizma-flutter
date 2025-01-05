@@ -3,6 +3,7 @@ class AppDimens {
   static const double zeroc = 0.0;
 
   // Margin
+  static const double paddingXXSmall = 4.0;
   static const double paddingXSmall = 8.0;
   static const double paddingSmall = 12.0;
   static const double paddingMedium = 16.0;
@@ -12,6 +13,7 @@ class AppDimens {
   static const double paddingXXLarge = 36.0;
 
   //Padding
+  static const double marginxSmall = 4.0;
   static const double marginSmall = 8.0;
   static const double marginMedium = 16.0;
   static const double marginLarge = 24.0;
@@ -30,11 +32,11 @@ class AppDimens {
   static const double iconLarge = 32.0;
   static const double iconXLarge = 48.0;
   static const double iconXXLarge = 64.0;
+  static const double iconXsXLarge = 80.0;
   static const double iconXXXLarge = 100.0;
   static const double iconExtraLarge = 200.0;
 
   // Genel Boyutlar
-
   static const double squareXSmall = 24.0;
   static const double squareSmall = 36.0;
   static const double squareMedium = 48.0;
@@ -47,4 +49,5 @@ class AppDimens {
   static const double cardLElevation = 4.0;
   static const double borderRadius = 8.0;
   static const double borderLargeRadius = 16.0;
+  static const double borderXLargeRadius = 32.0;
 }

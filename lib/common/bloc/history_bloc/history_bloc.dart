@@ -23,7 +23,6 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     on<AddHistory>((event, emit) async {
       try {
         await _repository.addHistory(event.history);
-        print("EKLENDI LAAAN ${event.history.name}");
         add(FetchAllHistories());
       } catch (e) {
         emit(HistoryError('Veri eklenirken hata oluştu: $e'));

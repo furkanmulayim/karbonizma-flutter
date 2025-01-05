@@ -99,7 +99,9 @@ class _MenuBody extends StatelessWidget {
             },
           ),
           NormalButton(
-            onClick: () {},
+            onClick: () {
+              context.go('/history');
+            },
             text: AppTexts.homePageButton,
             icon: Icon(
               Icons.history,
