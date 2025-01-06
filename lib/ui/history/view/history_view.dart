@@ -9,6 +9,7 @@ import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
+import 'package:karbonizma/ui/history/widgets/pie_chart.dart';
 
 part '../widgets/waste_card.dart';
 
@@ -71,16 +72,31 @@ class WasteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (wasteItems.isNotEmpty) {
-      return ListView.builder(
-        itemCount: wasteItems.length,
-        itemBuilder: (context, index) {
-          return _WasteCard(item: wasteItems[index]);
-        },
-      );
+      return historyPageBuild();
     } else {
       return Center(
         child: Text("no data"),
       );
     }
+  }
+
+  Widget historyPageBuild() {
+    return Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 200,
+          child: PieChartFromWasteItems(wasteItems: wasteItems),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: wasteItems.length,
+            itemBuilder: (context, index) {
+              return _WasteCard(item: wasteItems[index]);
+            },
+          ),
+        ),
+      ],
+    );
   }
 }

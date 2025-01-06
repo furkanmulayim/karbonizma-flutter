@@ -4,7 +4,58 @@ class _WasteCard extends StatelessWidget {
   const _WasteCard({required this.item});
 
   final HistoryModel item;
-
+ @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppDimens.paddingMedium,
+        vertical: AppDimens.paddingXSmall,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.textWhite,
+          borderRadius: BorderRadius.circular(AppDimens.borderXLargeRadius),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.greyxLight,
+              blurRadius: AppDimens.borderRadius,
+              offset: const Offset(AppDimens.zeroc, AppDimens.cardElevation),
+            ),
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildImageAndWeight(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildTextsAndMenu(),
+                  HeightBox(h: AppDimens.marginSmall),
+                  _buildInfoRow(),
+                ],
+              ),
+            ),
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              IconButton(
+                icon: Icon(
+                  Icons.close,
+                  size: 22,
+                  color: AppColors.greyLight,
+                ),
+                onPressed: () {
+                  print("Silme işlemi tetiklendi");
+                },
+              ),
+              HeightBox(h: AppDimens.iconXsXLarge),
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
+  
   Widget _buildImageAndWeight() {
     return Padding(
       padding: const EdgeInsets.all(AppDimens.borderLargeRadius),
@@ -112,56 +163,5 @@ class _WasteCard extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppDimens.paddingMedium,
-        vertical: AppDimens.paddingXSmall,
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.textWhite,
-          borderRadius: BorderRadius.circular(AppDimens.borderXLargeRadius),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.greyxLight,
-              blurRadius: AppDimens.borderRadius,
-              offset: const Offset(AppDimens.zeroc, AppDimens.cardElevation),
-            ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _buildImageAndWeight(),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildTextsAndMenu(),
-                  HeightBox(h: AppDimens.marginSmall),
-                  _buildInfoRow(),
-                ],
-              ),
-            ),
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              IconButton(
-                icon: Icon(
-                  Icons.close,
-                  size: 22,
-                  color: AppColors.greyLight,
-                ),
-                onPressed: () {
-                  // Silme işlemini burada yapabilirsiniz
-                  print("Silme işlemi tetiklendi");
-                },
-              ),
-              HeightBox(h: AppDimens.iconXsXLarge),
-            ]),
-          ],
-        ),
-      ),
-    );
-  }
+ 
 }

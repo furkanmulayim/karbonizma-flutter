@@ -28,8 +28,11 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.0.14
 
-  #Charts Animation
+  #İndicator Animation
   gauge_indicator: ^0.4.3
+
+  #Charts Anim
+  fl_chart: ^0.69.2
 
   #Lottie Animation
   lottie: ^3.2.0
