@@ -19,10 +19,12 @@ import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
 import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
+import 'package:lottie/lottie.dart';
 
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
 part '../widgets/waste_weight.dart';
+part '../widgets/greeting_popup.dart';
 
 class DetailView extends StatefulWidget {
   const DetailView({super.key, required this.id});
@@ -145,8 +147,7 @@ class _DetailBody extends StatelessWidget {
                           ),
                         ),
                       );
-
-                      context.go('/congrats/${item.name}/$state');
+                      showGreetingPopup(context, state.toString(), item.name);
                     },
                     text: '${item.name} ${AppTexts.detailPageButton}',
                     icon: Icon(Icons.recycling, color: AppColors.textWhite),

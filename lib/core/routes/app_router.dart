@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/ui/detail/view/detail_view.dart';
-import 'package:karbonizma/ui/greeting/view/greeting_view.dart';
 import 'package:karbonizma/ui/history/view/history_view.dart';
 import 'package:karbonizma/ui/home/view/home_view.dart';
 
 class AppRouter {
   //params
   static String detailsPath = '/detail/:id';
-  static String greetingPath = '/congrats/:name/:waste';
   static String historyPath = '/history';
   static String homePath = '/';
 
@@ -35,16 +33,6 @@ class AppRouter {
           return DetailView(
             id: id,
           );
-        },
-      ),
-
-      /// Greeting Page
-      GoRoute(
-        path: greetingPath,
-        builder: (BuildContext context, GoRouterState state) {
-          final name = state.pathParameters['name']!;
-          final waste = int.parse(state.pathParameters['waste']!);
-          return GreetingView(name: name, waste: waste);
         },
       ),
     ],
