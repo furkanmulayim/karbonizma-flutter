@@ -29,4 +29,15 @@ class AppColors {
   static const Color accentGreen50 = Color(0xFF71D28C);
   static const Color accentGreen = Color(0xB5C9FF6D);
   static const Color accentGreenBackground = Color(0xEBE0FAE1);
+
+// Pie Charts Colors (Distinct Soft Green Tones)
+  static const Color pieChartColor1 = Color(0xFF6D9A3D); // Olive Green
+  static const Color pieChartColor2 = Color(0xFF8FBF68); // Pale Green
+  static const Color pieChartColor3 = Color(0xFF557F2A); // Dark Olive Green
+  static const Color pieChartColor4 = Color(0xFFB9D47F); // Light Yellow-Green
+  static const Color pieChartColor5 = Color(0xFF4F9F70); // Teal Green
+  static const Color pieChartColor6 = Color(0xFF7BAF86); // Sage Green
+  static const Color pieChartColor7 = Color(0xFF9EBD8C); // Soft Moss Green
+  static const Color pieChartColor8 = Color(0xFF3D6A47); // Forest Green
+  static const Color pieChartColor9 = Color(0xFF5C9E61); // Dusty Green
 }

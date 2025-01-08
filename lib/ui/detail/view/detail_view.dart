@@ -106,57 +106,60 @@ class _DetailBody extends StatelessWidget {
 
     int pers;
     int rat;
-    return Center(
-      child: Column(
-        children: [
-          HeaderContent(imageUrl: item.image, explain: item.explain),
-          HeaderTitle(title: AppTexts.detailPageCarbonTitles),
-          BlocBuilder<WasteCubit, int>(
-            builder: (context, state) {
-              pers = wasteCubit.calcPersentageValue(item.persentage);
-              rat = wasteCubit.calcRatioValue(item.carbonRatio);
-              return Column(
-                children: [
-                  _CarbonContent(
-                    persentage: pers,
-                    ratio: rat,
-                  ),
-                  _WasteWeight(
-                      stater: state.toString(),
-                      increaseWasteGram: wasteCubit.increase,
-                      decreaseWasteGram: wasteCubit.decrease),
-                  NormalButton(
-                    onClick: () {
-                      DateTime now = DateTime.now();
-                      statisCubit.increasePoints(
-                        ecoPoints: pers,
-                        co2Point: rat,
-                        totalPoint: 1,
-                      );
-                      historyBloc.add(
-                        AddHistory(
-                          HistoryModel(
-                            id: item.id,
-                            name: item.name,
-                            image: item.image,
-                            topEcoPoints: pers,
-                            topCo2Points: rat,
-                            date: DateFormat("d MMMM yyyy, HH:mm", "tr_TR")
-                                .format(now),
-                            kg: state.toString(),
+    return PopScope(
+      canPop: false,
+      child: Center(
+        child: Column(
+          children: [
+            HeaderContent(imageUrl: item.image, explain: item.explain),
+            HeaderTitle(title: AppTexts.detailPageCarbonTitles),
+            BlocBuilder<WasteCubit, int>(
+              builder: (context, state) {
+                pers = wasteCubit.calcPersentageValue(item.persentage);
+                rat = wasteCubit.calcRatioValue(item.carbonRatio);
+                return Column(
+                  children: [
+                    _CarbonContent(
+                      persentage: pers,
+                      ratio: rat,
+                    ),
+                    _WasteWeight(
+                        stater: state.toString(),
+                        increaseWasteGram: wasteCubit.increase,
+                        decreaseWasteGram: wasteCubit.decrease),
+                    NormalButton(
+                      onClick: () {
+                        DateTime now = DateTime.now();
+                        statisCubit.increasePoints(
+                          ecoPoints: pers,
+                          co2Point: rat,
+                          totalPoint: 1,
+                        );
+                        historyBloc.add(
+                          AddHistory(
+                            HistoryModel(
+                              id: item.id,
+                              name: item.name,
+                              image: item.image,
+                              topEcoPoints: pers,
+                              topCo2Points: rat,
+                              date: DateFormat("d MMMM yyyy, HH:mm", "tr_TR")
+                                  .format(now),
+                              kg: state.toString(),
+                            ),
                           ),
-                        ),
-                      );
-                      showGreetingPopup(context, state.toString(), item.name);
-                    },
-                    text: '${item.name} ${AppTexts.detailPageButton}',
-                    icon: Icon(Icons.recycling, color: AppColors.textWhite),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
+                        );
+                        showGreetingPopup(context, state.toString(), item.name);
+                      },
+                      text: '${item.name} ${AppTexts.detailPageButton}',
+                      icon: Icon(Icons.recycling, color: AppColors.textWhite),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

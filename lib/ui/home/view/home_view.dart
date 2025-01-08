@@ -81,39 +81,42 @@ class _MenuBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          HeaderTitle(title: AppTexts.homePagePointTitles),
-          BlocBuilder<StatisCubit, StatisModel>(
-            builder: (context, state) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _HeaderContainers(
-                    eco: state.ecoPoints.toString(),
-                    co2: state.co2Point.toString(),
-                    re: state.totalPoint.toString(),
-                  ),
-                ],
-              );
-            },
-          ),
-          NormalButton(
-            onClick: () {
-              context.go('/history');
-            },
-            text: AppTexts.homePageButton,
-            icon: Icon(
-              Icons.history,
-              color: AppColors.textWhite,
+    return PopScope(
+      canPop: false,
+      child: Center(
+        child: Column(
+          children: [
+            HeaderTitle(title: AppTexts.homePagePointTitles),
+            BlocBuilder<StatisCubit, StatisModel>(
+              builder: (context, state) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _HeaderContainers(
+                      eco: state.ecoPoints.toString(),
+                      co2: state.co2Point.toString(),
+                      re: state.totalPoint.toString(),
+                    ),
+                  ],
+                );
+              },
             ),
-          ),
-          HeaderTitle(title: AppTexts.homePageListTitle),
-          Flexible(
-            child: _LazyList(items: items),
-          ),
-        ],
+            NormalButton(
+              onClick: () {
+                context.go('/history');
+              },
+              text: AppTexts.homePageButton,
+              icon: Icon(
+                Icons.history,
+                color: AppColors.textWhite,
+              ),
+            ),
+            HeaderTitle(title: AppTexts.homePageListTitle),
+            Flexible(
+              child: _LazyList(items: items),
+            ),
+          ],
+        ),
       ),
     );
   }

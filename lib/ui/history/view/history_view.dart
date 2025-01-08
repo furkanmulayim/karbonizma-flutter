@@ -40,24 +40,27 @@ class _HistoryViewState extends State<HistoryView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => historyBloc,
-      child: Scaffold(
-        appBar: BackAppBar(
-          text: "History",
-          backClick: () {
-            context.go('/');
-          },
-        ),
-        body: BlocBuilder<HistoryBloc, HistoryState>(
-          builder: (context, state) {
-            if (state is HistoryLoading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state is HistoryLoaded) {
-              return WasteList(wasteItems: state.histories);
-            } else if (state is HistoryError) {
-              return Center(child: Text(state.message));
-            }
-            return Center(child: Text("No data"));
-          },
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          appBar: BackAppBar(
+            text: "History",
+            backClick: () {
+              context.go('/');
+            },
+          ),
+          body: BlocBuilder<HistoryBloc, HistoryState>(
+            builder: (context, state) {
+              if (state is HistoryLoading) {
+                return Center(child: CircularProgressIndicator());
+              } else if (state is HistoryLoaded) {
+                return WasteList(wasteItems: state.histories.reversed.toList());
+              } else if (state is HistoryError) {
+                return Center(child: Text(state.message));
+              }
+              return Center(child: Text("No data"));
+            },
+          ),
         ),
       ),
     );
@@ -81,22 +84,21 @@ class WasteList extends StatelessWidget {
   }
 
   Widget historyPageBuild() {
-    return Column(
-      children: [
-        SizedBox(
-          width: 200,
-          height: 200,
-          child: PieChartFromWasteItems(wasteItems: wasteItems),
-        ),
-        Expanded(
-          child: ListView.builder(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          PieChartFromWasteItems(wasteItems: wasteItems), // Pie chart widget
+          SizedBox(height: 20), // Optional space between the two widgets
+          ListView.builder(
             itemCount: wasteItems.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               return _WasteCard(item: wasteItems[index]);
             },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

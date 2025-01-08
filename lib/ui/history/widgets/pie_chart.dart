@@ -11,49 +11,101 @@ class PieChartFromWasteItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Color> colors = [
-      AppColors.accentGreen50,
-      AppColors.accentGreen100,
-      AppColors.accentGreen200,
-      AppColors.accentGreen300,
-      AppColors.accentGreen500,
-      AppColors.accentGreen900,
-      AppColors.accentGreen1000,
+      AppColors.pieChartColor1,
+      AppColors.pieChartColor2,
+      AppColors.pieChartColor3,
+      AppColors.pieChartColor4,
+      AppColors.pieChartColor5,
+      AppColors.pieChartColor6,
+      AppColors.pieChartColor7,
+      AppColors.pieChartColor8,
+      AppColors.pieChartColor9,
     ];
 
-    // Normalize data for pie chart
-    final totalKg =
-        wasteItems.fold(0.0, (sum, item) => sum + int.parse(item.kg));
-    final List<PieChartSectionData> sections = wasteItems
-        .asMap()
-        .entries
-        .take(9) // Max 9 items
-        .map((entry) {
-      final index = entry.key;
-      final item = entry.value;
-      final percentage = (double.parse(item.kg) / totalKg) * 100;
+    // Group waste items by name
+    final groupedItems = <String, double>{};
+    for (var item in wasteItems) {
+      groupedItems[item.name] =
+          (groupedItems[item.name] ?? 0) + double.parse(item.kg);
+    }
 
-      return PieChartSectionData(
-        color: colors[index % colors.length],
-        value: double.parse(item.kg),
-        title: '${percentage.toStringAsFixed(1)}%', // Display as percentage
-        titleStyle: const TextStyle(
-          fontSize: 11,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+    // Calculate total kg
+    final totalKg = groupedItems.values.fold(0.0, (sum, kg) => sum + kg);
+
+    // Create sections and legend entries
+    final sections = <PieChartSectionData>[];
+    final legendItems = <Widget>[];
+
+    int index = 0;
+    groupedItems.forEach((name, kg) {
+      final editedName = name.split(' ').first;
+      final color = colors[index % colors.length];
+      final percentage = (kg / totalKg) * 100;
+
+      sections.add(PieChartSectionData(
+          color: color,
+          value: kg,
+          title: '${percentage.floor()}',
+          titleStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          radius: 60));
+
+      legendItems.add(
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2),
+          child: Row(
+            children: [
+              Container(
+                width: 12,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                editedName,
+                style: const TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
         ),
-        radius: 60, // Adjust radius as needed
       );
-    }).toList();
 
-    return AspectRatio(
-      aspectRatio: 1.4,
-      child: PieChart(
-        PieChartData(
-          sections: sections,
-          centerSpaceRadius: 20, // Adjust space in the middle
-          borderData: FlBorderData(show: false),
+      index++;
+    });
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Pie Chart
+        Expanded(
+          flex: 2,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: PieChart(
+              PieChartData(
+                sections: sections,
+                centerSpaceRadius: 40,
+                borderData: FlBorderData(show: false),
+              ),
+            ),
+          ),
         ),
-      ),
+        // Legend
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: legendItems,
+          ),
+        ),
+      ],
     );
   }
 }
