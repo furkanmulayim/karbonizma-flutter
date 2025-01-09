@@ -7,23 +7,30 @@ class HistoryModel extends HiveObject {
   @HiveField(0)
   int id;
 
+  @HiveField(8)
+  final int tokenID;
+
   @HiveField(1)
-  String name;
+  final String name;
 
   @HiveField(2)
-  String image;
+  final String image;
 
   @HiveField(3)
-  int topEcoPoints;
+  final int topEcoPoints;
 
   @HiveField(4)
-  int topCo2Points;
+  final int topCo2Points;
 
   @HiveField(5)
-  String date;
+  final String date;
 
   @HiveField(6)
-  String kg;
+  final  String kg;
+
+
+  @HiveField(7)
+  final String category;
 
   HistoryModel({
     required this.id,
@@ -33,5 +40,7 @@ class HistoryModel extends HiveObject {
     required this.topCo2Points,
     required this.date,
     required this.kg,
+    required this.category,
+    required this.tokenID
   });
 }

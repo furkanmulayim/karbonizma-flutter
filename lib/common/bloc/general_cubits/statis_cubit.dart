@@ -12,12 +12,22 @@ class StatisCubit extends Cubit<StatisModel> {
   Future<void> increasePoints({
     required int ecoPoints,
     required int co2Point,
-    required int totalPoint,
   }) async {
-    await _repository.updateStatis(
+    await _repository.increaseStatis(
       ecoPoints: ecoPoints,
       co2Point: co2Point,
-      totalPoint: totalPoint,
+    );
+    emit(await _repository.getStatis());
+  }
+
+  // Puanları azaltma işlemi
+  Future<void> decreasePoints({
+    required int ecoPoints,
+    required int co2Point,
+  }) async {
+    await _repository.decreaseStatis(
+      ecoPoints: ecoPoints,
+      co2Point: co2Point,
     );
     emit(await _repository.getStatis());
   }

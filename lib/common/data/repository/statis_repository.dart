@@ -25,20 +25,35 @@ class StatisRepository {
   }
 
   // Puanları güncelle
-  Future<void> updateStatis({
+  Future<void> increaseStatis({
     required int ecoPoints,
     required int co2Point,
-    required int totalPoint,
   }) async {
     final box = await _openBox();
     final history = box.get(0)!;
-    debugPrint('StatisRepository: updateStatis() ');
+    debugPrint('StatisRepository: increaseStatis() ');
     final updatedHistory = StatisModel(
-      ecoPoints: (history.ecoPoints + ecoPoints),
+      ecoPoints: history.ecoPoints + ecoPoints,
       co2Point: history.co2Point + co2Point,
-      totalPoint: history.totalPoint + totalPoint,
+      totalPoint: history.totalPoint +1,
     );
+    // Yeni veriyi kaydet
+    await box.put(0, updatedHistory);
+  }
 
+  // Puanları güncelle
+  Future<void> decreaseStatis({
+    required int ecoPoints,
+    required int co2Point,
+  }) async {
+    final box = await _openBox();
+    final history = box.get(0)!;
+    debugPrint('StatisRepository: decreaseStatis() ');
+    final updatedHistory = StatisModel(
+      ecoPoints: history.ecoPoints - ecoPoints,
+      co2Point: history.co2Point - co2Point,
+      totalPoint: history.totalPoint - 1,
+    );
     // Yeni veriyi kaydet
     await box.put(0, updatedHistory);
   }

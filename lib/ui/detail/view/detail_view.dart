@@ -133,7 +133,6 @@ class _DetailBody extends StatelessWidget {
                         statisCubit.increasePoints(
                           ecoPoints: pers,
                           co2Point: rat,
-                          totalPoint: 1,
                         );
                         historyBloc.add(
                           AddHistory(
@@ -143,9 +142,11 @@ class _DetailBody extends StatelessWidget {
                               image: item.image,
                               topEcoPoints: pers,
                               topCo2Points: rat,
-                              date: DateFormat("d MMMM yyyy, HH:mm", "tr_TR")
+                              date: DateFormat("dd MMMM", "tr")
                                   .format(now),
                               kg: state.toString(),
+                              category: item.category,
+                              tokenID: item.tokenID
                             ),
                           ),
                         );

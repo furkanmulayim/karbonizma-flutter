@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/constants/app_dimens.dart';
 
 class PieChartFromWasteItems extends StatelessWidget {
   final List<HistoryModel> wasteItems;
@@ -15,18 +16,13 @@ class PieChartFromWasteItems extends StatelessWidget {
       AppColors.pieChartColor2,
       AppColors.pieChartColor3,
       AppColors.pieChartColor4,
-      AppColors.pieChartColor5,
-      AppColors.pieChartColor6,
-      AppColors.pieChartColor7,
-      AppColors.pieChartColor8,
-      AppColors.pieChartColor9,
     ];
 
     // Group waste items by name
     final groupedItems = <String, double>{};
     for (var item in wasteItems) {
-      groupedItems[item.name] =
-          (groupedItems[item.name] ?? 0) + double.parse(item.kg);
+      groupedItems[item.category] =
+          (groupedItems[item.category] ?? 0) + double.parse(item.kg);
     }
 
     // Calculate total kg
@@ -45,67 +41,62 @@ class PieChartFromWasteItems extends StatelessWidget {
       sections.add(PieChartSectionData(
           color: color,
           value: kg,
-          title: '${percentage.floor()}',
-          titleStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-          radius: 60));
+          title: percentage.floor().toString(),
+          titleStyle: TextStyle(
+              color: AppColors.textWhite,
+             fontSize: AppDimens.fontSmall ,fontWeight: FontWeight.bold),
+          radius: 20));
 
       legendItems.add(
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
-          child: Row(
-            children: [
-              Container(
-                width: 12,
-                height: 12,
-                decoration: BoxDecoration(
-                  color: color,
-                  shape: BoxShape.circle,
-                ),
+        Row(
+          children: [
+            Container(
+              width: 35,
+              height: 13,
+              decoration: BoxDecoration(
+                color: color,
+                shape: BoxShape.circle,
               ),
-              const SizedBox(width: 8),
-              Text(
-                editedName,
-                style: const TextStyle(fontSize: 15),
-              ),
-            ],
-          ),
+            ),
+            Text(
+              editedName,
+              style: TextStyle(fontSize: 16, color: AppColors.accentGreen1000),
+            ),
+          ],
         ),
       );
 
       index++;
     });
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Pie Chart
-        Expanded(
-          flex: 2,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: PieChart(
-              PieChartData(
-                sections: sections,
-                centerSpaceRadius: 40,
-                borderData: FlBorderData(show: false),
+    return Padding(
+      padding: const EdgeInsets.only(left: 45, top: 15, bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Pie Chart
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1.2,
+              child: PieChart(
+                PieChartData(
+                  sections: sections,
+                  centerSpaceRadius: 40,
+                  borderData: FlBorderData(show: false),
+                ),
               ),
             ),
           ),
-        ),
-        // Legend
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: legendItems,
+          // Legend
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: legendItems,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

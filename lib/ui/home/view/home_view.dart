@@ -14,6 +14,7 @@ import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
 import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 part '../widgets/drawer.dart';
 part '../widgets/header_container.dart';
@@ -22,16 +23,18 @@ part '../widgets/lazy_list.dart';
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
   late final CarbonBloc homeBloc;
-
+  String _appVersion = '';
   @override
   void initState() {
     super.initState();
+    _loadAppVersion();
     homeBloc = CarbonBloc(
       recycleRepo: RecycleRepository(apiService: RecycleApiService()),
     );
@@ -45,6 +48,14 @@ class _HomeViewState extends State<HomeView> {
     super.dispose();
   }
 
+  void _loadAppVersion() {
+    PackageInfo.fromPlatform().then((packageInfo) {
+      setState(() {
+        _appVersion = packageInfo.version;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -54,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
           text: AppTexts.homeName,
         ),
         drawer: Drawer(
-          child: _Drawer(),
+          child: _Drawer(versData: _appVersion,),
         ),
         body: BlocBuilder<CarbonBloc, CarbonState>(
           builder: (context, state) {

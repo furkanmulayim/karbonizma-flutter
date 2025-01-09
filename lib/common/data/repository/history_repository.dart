@@ -31,10 +31,10 @@ class HistoryRepository {
   }
 
   //Key'e Göre Sil
-  Future<void> deleteHistory(int key) async {
+  Future<void> deleteHistory(int index) async {
     debugPrint('HistoryRepository: deleteHistory()');
     final box = await _openBox();
-    await box.delete(key);
+    await box.deleteAt(index);
   }
 
   // Tüm verileri temizleme

@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/repository/history_repository.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
+import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
+import 'package:karbonizma/core/widgets/buttons/secondary_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/ui/history/widgets/pie_chart.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../../core/constants/app_texts.dart';
+import '../../../core/widgets/titles/header_title.dart';
 
 part '../widgets/waste_card.dart';
 
@@ -44,7 +51,7 @@ class _HistoryViewState extends State<HistoryView> {
         canPop: false,
         child: Scaffold(
           appBar: BackAppBar(
-            text: "History",
+            text: AppTexts.congrataHistoryPageButton,
             backClick: () {
               context.go('/');
             },
@@ -54,7 +61,7 @@ class _HistoryViewState extends State<HistoryView> {
               if (state is HistoryLoading) {
                 return Center(child: CircularProgressIndicator());
               } else if (state is HistoryLoaded) {
-                return WasteList(wasteItems: state.histories.reversed.toList());
+                return WasteList(wasteItems: state.histories);
               } else if (state is HistoryError) {
                 return Center(child: Text(state.message));
               }
@@ -77,8 +84,27 @@ class WasteList extends StatelessWidget {
     if (wasteItems.isNotEmpty) {
       return historyPageBuild();
     } else {
-      return Center(
-        child: Text("no data"),
+      return Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              'assets/lottie/recycle.json',
+              width: AppDimens.iconXXXLarge,
+            ),
+            Center(
+              child: Text(
+                style: TextStyle(
+                  color: AppColors.greyLight,
+                  fontSize: AppDimens.fontxMedium
+                ),
+                AppTexts.noDataForHistory,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
       );
     }
   }
@@ -87,14 +113,15 @@ class WasteList extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          PieChartFromWasteItems(wasteItems: wasteItems), // Pie chart widget
-          SizedBox(height: 20), // Optional space between the two widgets
+          HeaderTitle(title: AppTexts.recycleStatis),
+          PieChartFromWasteItems(wasteItems: wasteItems),
+          HeaderTitle(title: AppTexts.recyclehistory),
           ListView.builder(
             itemCount: wasteItems.length,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return _WasteCard(item: wasteItems[index]);
+              return _WasteCard(item: wasteItems[index], index: index);
             },
           ),
         ],

@@ -40,6 +40,9 @@ dependencies:
   #Date Time 
   intl: ^0.20.1
 
+  #App Version Number
+  package_info_plus: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:

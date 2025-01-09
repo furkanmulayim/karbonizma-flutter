@@ -1,10 +1,12 @@
 part of '../view/history_view.dart';
 
 class _WasteCard extends StatelessWidget {
-  const _WasteCard({required this.item});
+  const _WasteCard({required this.item, required this.index});
 
   final HistoryModel item;
- @override
+  final int index;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -45,7 +47,7 @@ class _WasteCard extends StatelessWidget {
                   color: AppColors.greyLight,
                 ),
                 onPressed: () {
-                  print("Silme işlemi tetiklendi");
+                  _showDeleteDialog(context);
                 },
               ),
               HeightBox(h: AppDimens.iconXsXLarge),
@@ -55,7 +57,60 @@ class _WasteCard extends StatelessWidget {
       ),
     );
   }
-  
+
+  void _showDeleteDialog(BuildContext context) {
+    final HistoryBloc historyBloc = context.read<HistoryBloc>();
+    final StatisCubit statisCubit = context.read<StatisCubit>();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.borderLargeRadius),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.marginLarge),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(textAlign: TextAlign.center,
+                  '"${item.kg} kg ${item.name}" ${AppTexts.areYouSureDelete}',
+                  style: const TextStyle(fontSize: AppDimens.fontMedium),
+                ),
+                const HeightBox(h: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: NormalButton(
+                        onClick: () {
+                          historyBloc.add(DeleteHistory(index));
+                          statisCubit.decreasePoints(ecoPoints: item.topEcoPoints, co2Point: item.topCo2Points);
+                          Navigator.of(context).pop();
+                        },
+                        text: AppTexts.yes,
+                      ),
+                    ),
+                    const WidthBox(w: 8),
+                    Expanded(
+                      child: SecondaryButton(
+                        onClick: () {
+                          Navigator.of(context).pop();
+                        },
+                        text: AppTexts.no,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildImageAndWeight() {
     return Padding(
       padding: const EdgeInsets.all(AppDimens.borderLargeRadius),
@@ -103,7 +158,7 @@ class _WasteCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.date,
+            '${item.date} - ${item.category}',
             style: const TextStyle(
               fontSize: AppDimens.fontsMedium,
               color: AppColors.accentGreen300,
@@ -125,7 +180,7 @@ class _WasteCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        _buildInfoBox(Icons.attach_money, '+${item.topEcoPoints}'),
+        _buildInfoBox(Icons.emoji_events, '+${item.topEcoPoints}'),
         WidthBox(w: AppDimens.paddingSmall),
         _buildInfoBox(Icons.eco, '%${item.topCo2Points.toString()}'),
       ],
@@ -146,7 +201,7 @@ class _WasteCard extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: AppDimens.iconMedium,
+            size: AppDimens.iconXMedium,
             color: AppColors.accentGreen100,
           ),
           HeightBox(h: AppDimens.marginxSmall),
@@ -162,6 +217,4 @@ class _WasteCard extends StatelessWidget {
       ),
     );
   }
-
- 
 }

@@ -28,6 +28,7 @@ class AppDimens {
 
   // İkons
   static const double iconSmall = 16.0;
+  static const double iconXMedium = 20.0;
   static const double iconMedium = 24.0;
   static const double iconLarge = 32.0;
   static const double iconXLarge = 48.0;
@@ -48,6 +49,7 @@ class AppDimens {
 
   static const double cardElevation = 2.0;
   static const double cardLElevation = 4.0;
+  static const double drawerTopHeight = 100.0;
   static const double borderRadius = 8.0;
   static const double borderLargeRadius = 16.0;
   static const double borderXLargeRadius = 32.0;

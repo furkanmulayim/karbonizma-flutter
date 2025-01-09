@@ -20,4 +20,17 @@ class AppTexts {
   static const String rePointIcon = 'assets/png/recycle.png';
   static const String savingPoint = "CO₂ Kazanç";
   static const String savingPointIcon = 'assets/png/footprint.png';
+  static const String recycleStatis = 'Dönüşüm İstatistikleri';
+  static const String recyclehistory = 'Geçmiş Dönüşümler';
+  static const String noDataForHistory = 'Herhangi bir geçmiş bulunamadı.Lütfen önce dönüşüm yapın.';
+  static const String areYouSureDelete = 'silmek istediğinize emin misiniz?';
+  static const String yes = 'Evet';
+  static const String no = 'Hayır';
+  static const String settings = 'Ayarlar';
+  static const String quit = 'Uygulamayı Kapat';
+  static const String rewards = 'Ödülleriniz';
+  static const String howToUse = 'Nasıl Kullanılır?';
+  static const String privacyPolicy = 'Gizlilik Sözleşmesi ve KVKK';
+
+
 }

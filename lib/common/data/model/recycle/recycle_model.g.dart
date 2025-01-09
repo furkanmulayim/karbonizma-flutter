@@ -23,13 +23,15 @@ class RecycleModelAdapter extends TypeAdapter<RecycleModel> {
       explain: fields[3] as String,
       persentage: fields[4] as int,
       carbonRatio: fields[5] as int,
+      category: fields[6] as String,
+      tokenID: fields[7] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, RecycleModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +43,11 @@ class RecycleModelAdapter extends TypeAdapter<RecycleModel> {
       ..writeByte(4)
       ..write(obj.persentage)
       ..writeByte(5)
-      ..write(obj.carbonRatio);
+      ..write(obj.carbonRatio)
+      ..writeByte(6)
+      ..write(obj.category)
+      ..writeByte(7)
+      ..write(obj.tokenID);
   }
 
   @override

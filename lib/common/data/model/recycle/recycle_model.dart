@@ -22,6 +22,12 @@ class RecycleModel extends HiveObject {
   @HiveField(5)
   final int carbonRatio;
 
+  @HiveField(6)
+  final String category;
+
+  @HiveField(7)
+  final int tokenID;
+
   RecycleModel({
     required this.id,
     required this.name,
@@ -29,6 +35,8 @@ class RecycleModel extends HiveObject {
     required this.explain,
     required this.persentage,
     required this.carbonRatio,
+    required this.category,
+    required this.tokenID
   });
 
   factory RecycleModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +47,8 @@ class RecycleModel extends HiveObject {
       explain: json['explain'],
       persentage: json['persentage'],
       carbonRatio: json['carbonRatio'],
+      category: json['category'],
+      tokenID: json['tokenID'],
     );
   }
 
@@ -50,6 +60,8 @@ class RecycleModel extends HiveObject {
       'explain': explain,
       'persentage': persentage,
       'carbonRatio': carbonRatio,
+      'category': category,
+      'tokenID': tokenID,
     };
   }
 }
