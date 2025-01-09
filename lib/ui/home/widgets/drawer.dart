@@ -6,26 +6,58 @@ class _Drawer extends StatelessWidget {
   const _Drawer({required this.versData});
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.only(top: AppDimens.drawerTopHeight),
       children: [
-        listTiling(AppTexts.settings, Icons.settings, () {}),
-        listTiling(AppTexts.rewards, Icons.solar_power, () {}),
-        listTiling(AppTexts.howToUse, Icons.how_to_reg, () {}),
-        listTiling(AppTexts.quit, Icons.back_hand, () {}),
-        listTiling(AppTexts.privacyPolicy, Icons.privacy_tip, () {}),
+        listTiling(
+          text: AppTexts.settings,
+          icon: Icons.settings,
+          onTap: () => context.go('/rewards'),
+        ),
+        listTiling(
+          text: AppTexts.rewards,
+          icon: Icons.solar_power,
+          onTap: () => context.go('/rewards'),
+        ),
+        listTiling(
+          text: AppTexts.howToUse,
+          icon: Icons.how_to_reg,
+          onTap: () => context.go('/rewards'),
+        ),
+        listTiling(
+          text: AppTexts.quit,
+          icon: Icons.back_hand,
+          onTap: () {},
+        ),
+        listTiling(
+          text: AppTexts.privacyPolicy,
+          icon: Icons.privacy_tip,
+          onTap: () => context.go('/rewards'),
+        ),
       ],
     );
   }
 
-  Widget listTiling(String text, IconData icon, func) {
+  Widget listTiling({
+    required String text,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(text),
-      onTap: func,
-      iconColor: AppColors.accentGreen100,
-      textColor: AppColors.accentGreen1000,
+      leading: Icon(
+        icon,
+        color: AppColors.accentGreen100,
+      ),
+      title: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: AppDimens.fontMedium,
+          color: AppColors.accentGreen500,
+        ),
+      ),
+      onTap: onTap,
     );
   }
 }
