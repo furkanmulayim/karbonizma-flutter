@@ -6,7 +6,7 @@ import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 class RecycleApiService {
   final Dio _dio = Dio();
 
-  Future<List<RecycleModel>> fetchWaste() async {
+  Future<List<RecycleModel>> getData() async {
     try {
       final response = await _dio.get(ApiConstants.githubBaseUrlForWastes);
   

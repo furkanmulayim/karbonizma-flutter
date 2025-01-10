@@ -35,15 +35,30 @@ class _LazyList extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  WidthBox(),
+                  WidthBox(w:AppDimens.marginMedium),
                   Expanded(
-                    child: Text(
-                      item.name,
-                      style: TextStyle(
-                        fontSize: AppDimens.fontMedium,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.accentGreen300,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // Metinleri sola hizalar
+                      children: [
+                        Text(
+                          item.name,
+                          style: TextStyle(
+                            fontSize: AppDimens.fontMedium,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.accentGreen300,
+                          ),
+                        ),
+                        Text(
+                          item.category, // Burada item.subname'i ekledik
+                          style: TextStyle(
+                            fontSize: AppDimens.fontSmall,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors
+                                .accentGreen300,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

@@ -11,24 +11,9 @@ class _Drawer extends StatelessWidget {
       padding: EdgeInsets.only(top: AppDimens.drawerTopHeight),
       children: [
         listTiling(
-          text: AppTexts.settings,
-          icon: Icons.settings,
-          onTap: () => context.go('/rewards'),
-        ),
-        listTiling(
-          text: AppTexts.rewards,
-          icon: Icons.solar_power,
-          onTap: () => context.go('/rewards'),
-        ),
-        listTiling(
           text: AppTexts.howToUse,
           icon: Icons.how_to_reg,
           onTap: () => context.go('/rewards'),
-        ),
-        listTiling(
-          text: AppTexts.quit,
-          icon: Icons.back_hand,
-          onTap: () {},
         ),
         listTiling(
           text: AppTexts.privacyPolicy,

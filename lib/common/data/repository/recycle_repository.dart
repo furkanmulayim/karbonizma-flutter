@@ -18,7 +18,7 @@ class RecycleRepository {
         return box.values.toList();
       }
       // hivede yoksa apiden çek
-      final waste = await apiService.fetchWaste();
+      final waste = await apiService.getData();
 
       // hivea kaydet
       await box.addAll(waste);
