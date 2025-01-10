@@ -26,21 +26,19 @@ class HistoryModel extends HiveObject {
   final String date;
 
   @HiveField(6)
-  final  String kg;
-
+  final String kg;
 
   @HiveField(7)
   final String category;
 
-  HistoryModel({
-    required this.id,
-    required this.name,
-    required this.image,
-    required this.topEcoPoints,
-    required this.topCo2Points,
-    required this.date,
-    required this.kg,
-    required this.category,
-    required this.tokenID
-  });
+  HistoryModel(
+      {required this.id,
+      required this.name,
+      required this.image,
+      required this.topEcoPoints,
+      required this.topCo2Points,
+      required this.date,
+      required this.kg,
+      required this.category,
+      required this.tokenID});
 }

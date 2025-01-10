@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
+import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
-import 'package:karbonizma/common/data/repository/history_repository.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
-import 'package:karbonizma/common/data/repository/statis_repository.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository.dart';
+import 'package:karbonizma/common/data/repository/history_repo/history_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository_implement.dart';
+import 'package:karbonizma/common/data/repository/statis_repo/statis_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
@@ -27,6 +27,7 @@ void main() async {
   Hive.registerAdapter(StatisModelAdapter());
   Hive.registerAdapter(RecycleModelAdapter());
   Hive.registerAdapter(HistoryModelAdapter());
+  Hive.registerAdapter(RewardsModelAdapter());
 
   await initializeDateFormatting('tr_TR', null);
 
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => CarbonBloc(
             recycleRepo: RecycleRepositoryImpl(
-              apiService: RecycleApiService(),
+              apiService: GithubApiService(),
             ),
           ),
         ),

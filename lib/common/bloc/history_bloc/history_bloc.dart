@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
-import 'package:karbonizma/common/data/repository/history_repository.dart';
+import 'package:karbonizma/common/data/repository/history_repo/history_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'history_event.dart';
+
 part 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {

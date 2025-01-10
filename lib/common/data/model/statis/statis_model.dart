@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'statis_model.g.dart'; 
+part 'statis_model.g.dart';
 
 @HiveType(typeId: 1)
 class StatisModel extends HiveObject {

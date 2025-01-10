@@ -28,16 +28,15 @@ class RecycleModel extends HiveObject {
   @HiveField(7)
   final int tokenID;
 
-  RecycleModel({
-    required this.id,
-    required this.name,
-    required this.image,
-    required this.explain,
-    required this.persentage,
-    required this.carbonRatio,
-    required this.category,
-    required this.tokenID
-  });
+  RecycleModel(
+      {required this.id,
+      required this.name,
+      required this.image,
+      required this.explain,
+      required this.persentage,
+      required this.carbonRatio,
+      required this.category,
+      required this.tokenID});
 
   factory RecycleModel.fromJson(Map<String, dynamic> json) {
     return RecycleModel(

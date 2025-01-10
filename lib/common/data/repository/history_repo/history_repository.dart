@@ -4,6 +4,7 @@ import 'package:karbonizma/common/data/model/history/history_model.dart';
 
 class HistoryRepository {
   final String hiveBoxName = 'historyBox';
+
   //Box Aç
   Future<Box<HistoryModel>> _openBox() async {
     return await Hive.openBox<HistoryModel>(hiveBoxName);

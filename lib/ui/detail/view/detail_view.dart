@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
+import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
+import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
+import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -17,15 +19,12 @@ import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
 import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
-import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
-import 'package:karbonizma/common/bloc/carbon_bloc/carbon_bloc.dart';
-import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:lottie/lottie.dart';
 
+part '../widgets/greeting_popup.dart';
 part '../widgets/header_container.dart';
 part '../widgets/header_content.dart';
 part '../widgets/waste_weight.dart';
-part '../widgets/greeting_popup.dart';
 
 class DetailView extends StatefulWidget {
   const DetailView({super.key, required this.id});
@@ -49,7 +48,8 @@ class _DetailViewState extends State<DetailView> {
   void initState() {
     super.initState();
     homeBloc = CarbonBloc(
-      id: widget.id, recycleRepo: RecycleRepositoryImpl(apiService: RecycleApiService()),
+      id: widget.id,
+      recycleRepo: RecycleRepositoryImpl(apiService: GithubApiService()),
     );
     homeBloc.add(CarbonInitialEventById());
   }
@@ -135,17 +135,15 @@ class _DetailBody extends StatelessWidget {
                         historyBloc.add(
                           AddHistory(
                             HistoryModel(
-                              id: item.id,
-                              name: item.name,
-                              image: item.image,
-                              topEcoPoints: pers,
-                              topCo2Points: rat,
-                              date: DateFormat("dd MMMM", "tr")
-                                  .format(now),
-                              kg: state.toString(),
-                              category: item.category,
-                              tokenID: item.tokenID
-                            ),
+                                id: item.id,
+                                name: item.name,
+                                image: item.image,
+                                topEcoPoints: pers,
+                                topCo2Points: rat,
+                                date: DateFormat("dd MMMM", "tr").format(now),
+                                kg: state.toString(),
+                                category: item.category,
+                                tokenID: item.tokenID),
                           ),
                         );
                         showGreetingPopup(context, state.toString(), item.name);

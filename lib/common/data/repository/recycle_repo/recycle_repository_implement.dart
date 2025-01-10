@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository.dart';
 
-import '../service/recycle_service/recycle_api_service.dart';
+import '../../service/api_constants.dart';
+import '../../service/recycle_service/recycle_api_service.dart';
 
 class RecycleRepositoryImpl implements RecycleRepository {
-  final RecycleApiService apiService;
+  final GithubApiService apiService;
   final String hiveBoxName = 'recycleBox';
 
   RecycleRepositoryImpl({required this.apiService});
@@ -16,13 +17,12 @@ class RecycleRepositoryImpl implements RecycleRepository {
   Future<List<RecycleModel>> getWaste() async {
     final box = await Hive.openBox<RecycleModel>(hiveBoxName);
 
-    // Eğer Hive'de veri varsa döndür
     if (box.isNotEmpty) {
       return box.values.toList();
     }
 
-    // Eğer Hive boşsa API'den veri çek
-    final response = await apiService.getData();
+    final response =
+        await apiService.getData(ApiConstants.githubBaseUrlForWastes);
     List<dynamic> data = json.decode(response.data);
     final wasteList = data.map((item) => RecycleModel.fromJson(item)).toList();
 
@@ -38,7 +38,4 @@ class RecycleRepositoryImpl implements RecycleRepository {
     final item = box.values.firstWhere((item) => item.id == id);
     return item;
   }
-}
-
-class RecycleEntity {
 }

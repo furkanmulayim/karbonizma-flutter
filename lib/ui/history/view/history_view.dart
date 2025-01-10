@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
-import 'package:karbonizma/common/data/repository/history_repository.dart';
+import 'package:karbonizma/common/data/repository/history_repo/history_repository.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';

@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository.dart';
-import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
+import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -18,12 +17,13 @@ import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 part '../widgets/drawer.dart';
+
 part '../widgets/header_container.dart';
+
 part '../widgets/lazy_list.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
-
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -32,12 +32,13 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   late final CarbonBloc homeBloc;
   String _appVersion = '';
+
   @override
   void initState() {
     super.initState();
     _loadAppVersion();
     homeBloc = CarbonBloc(
-      recycleRepo: RecycleRepositoryImpl(apiService: RecycleApiService()),
+      recycleRepo: RecycleRepositoryImpl(apiService: GithubApiService()),
     );
     homeBloc.add(CarbonInitialEvent());
     context.read<StatisCubit>().loadHistory();
@@ -66,7 +67,9 @@ class _HomeViewState extends State<HomeView> {
           text: AppTexts.homeName,
         ),
         drawer: Drawer(
-          child: _Drawer(versData: _appVersion,),
+          child: _Drawer(
+            versData: _appVersion,
+          ),
         ),
         body: BlocBuilder<CarbonBloc, CarbonState>(
           builder: (context, state) {
@@ -89,6 +92,7 @@ class _HomeViewState extends State<HomeView> {
 
 class _MenuBody extends StatelessWidget {
   const _MenuBody({required this.items});
+
   final List<RecycleModel> items;
 
   @override

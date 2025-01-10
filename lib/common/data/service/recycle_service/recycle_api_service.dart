@@ -1,17 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:karbonizma/common/data/service/api_constants.dart';
-import 'dart:convert';
-import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
+import 'package:flutter/cupertino.dart';
 
-class RecycleApiService {
+class GithubApiService {
   final Dio _dio = Dio();
 
-  Future<Response> getData() async {
+  Future<Response> getData(url) async {
     try {
-      final response = await _dio.get(ApiConstants.githubBaseUrlForWastes);
+      final response = await _dio.get(url);
       return response;
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       rethrow;
     }
   }

@@ -35,7 +35,7 @@ class StatisRepository {
     final updatedHistory = StatisModel(
       ecoPoints: history.ecoPoints + ecoPoints,
       co2Point: history.co2Point + co2Point,
-      totalPoint: history.totalPoint +1,
+      totalPoint: history.totalPoint + 1,
     );
     // Yeni veriyi kaydet
     await box.put(0, updatedHistory);
