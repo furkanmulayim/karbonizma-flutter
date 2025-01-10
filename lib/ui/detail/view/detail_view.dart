@@ -7,6 +7,7 @@ import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -48,10 +49,7 @@ class _DetailViewState extends State<DetailView> {
   void initState() {
     super.initState();
     homeBloc = CarbonBloc(
-      recycleRepo: RecycleRepository(
-        apiService: RecycleApiService(),
-      ),
-      id: widget.id,
+      id: widget.id, recycleRepo: RecycleRepositoryImpl(apiService: RecycleApiService()),
     );
     homeBloc.add(CarbonInitialEventById());
   }

@@ -5,6 +5,7 @@ import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/repository/history_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/repository/statis_repository.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => StatisCubit(StatisRepository())),
         BlocProvider(
           create: (_) => CarbonBloc(
-            recycleRepo: RecycleRepository(
+            recycleRepo: RecycleRepositoryImpl(
               apiService: RecycleApiService(),
             ),
           ),

@@ -7,6 +7,7 @@ part 'carbon_event.dart';
 part 'carbon_state.dart';
 
 class CarbonBloc extends Bloc<CarbonEvent, CarbonState> {
+
   CarbonBloc({required this.recycleRepo, this.id}) : super(CarbonInitial()) {
     // HomeInitialEvent tetiklendiğinde yapılacak işlemler
     on<CarbonInitialEvent>((event, emit) async {

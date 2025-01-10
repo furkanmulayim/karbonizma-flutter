@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/repository/recycle_repository.dart';
+import 'package:karbonizma/common/data/repository/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -36,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _loadAppVersion();
     homeBloc = CarbonBloc(
-      recycleRepo: RecycleRepository(apiService: RecycleApiService()),
+      recycleRepo: RecycleRepositoryImpl(apiService: RecycleApiService()),
     );
     homeBloc.add(CarbonInitialEvent());
     context.read<StatisCubit>().loadHistory();
