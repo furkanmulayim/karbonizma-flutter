@@ -36,15 +36,12 @@ class PieChartFromWasteItems extends StatelessWidget {
     groupedItems.forEach((name, kg) {
       final editedName = name.split(' ').first;
       final color = colors[index % colors.length];
-      final percentage = (kg / totalKg) * 100;
+      //final percentage = (kg / totalKg) * 100;
 
       sections.add(PieChartSectionData(
           color: color,
           value: kg,
-          title: percentage.floor().toString(),
-          titleStyle: TextStyle(
-              color: AppColors.textWhite,
-             fontSize: AppDimens.fontSmall ,fontWeight: FontWeight.bold),
+          title: '',
           radius: 20));
 
       legendItems.add(

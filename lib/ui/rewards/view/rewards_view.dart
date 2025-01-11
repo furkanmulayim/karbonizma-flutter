@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:karbonizma/common/bloc/rewards_bloc/rewards_bloc_bloc.dart';
+import 'package:karbonizma/common/bloc/rewards_bloc/rewards_bloc.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/repository/rewards_repo/rewards_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
@@ -40,18 +40,20 @@ class _RewardsViewState extends State<RewardsView> {
       child: Scaffold(
         appBar: BackAppBar(
             text: AppTexts.rewards, backClick: () => context.go('/')),
-        body: BlocBuilder<RewardsBloc, RewardsState>(builder: (context, state) {
-          switch (state) {
-            case RewardsLoadingState(): //loading
-              return Center(child: CircularProgressIndicator());
-            case RewardsLoadingSuccessState(): //succes
-              return _RewardsBody(items: state.rewards);
-            case RewardsErrorState(): //error
-              return Center(child: Text('HOME ERROR!!'));
-            default: //default
-              return Center(child: CircularProgressIndicator());
-          }
-        }),
+        body: BlocBuilder<RewardsBloc, RewardsState>(
+          builder: (context, state) {
+            switch (state) {
+              case RewardsLoadingState(): //loading
+                return Center(child: CircularProgressIndicator());
+              case RewardsLoadingSuccessState(): //succes
+                return _RewardsBody(items: state.rewards);
+              case RewardsErrorState(): //error
+                return Center(child: Text(AppTexts.err));
+              default: //default
+                return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
       ),
     );
   }

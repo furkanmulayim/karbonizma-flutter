@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
+import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/repository/history_repo/history_repository.dart';
@@ -28,6 +29,7 @@ void main() async {
   Hive.registerAdapter(RecycleModelAdapter());
   Hive.registerAdapter(HistoryModelAdapter());
   Hive.registerAdapter(RewardsModelAdapter());
+  Hive.registerAdapter(PrivacyModelAdapter());
 
   await initializeDateFormatting('tr_TR', null);
 

@@ -18,7 +18,7 @@ class _Drawer extends StatelessWidget {
         listTiling(
           text: AppTexts.privacyPolicy,
           icon: Icons.privacy_tip,
-          onTap: () => context.go('/rewards'),
+          onTap: () => context.go('/privacy'),
         ),
       ],
     );

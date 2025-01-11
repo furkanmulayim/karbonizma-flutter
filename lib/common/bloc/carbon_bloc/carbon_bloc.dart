@@ -4,7 +4,6 @@ import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repositor
 import 'package:meta/meta.dart';
 
 part 'carbon_event.dart';
-
 part 'carbon_state.dart';
 
 class CarbonBloc extends Bloc<CarbonEvent, CarbonState> {

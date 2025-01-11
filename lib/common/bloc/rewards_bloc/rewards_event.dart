@@ -1,4 +1,4 @@
-part of 'rewards_bloc_bloc.dart';
+part of 'rewards_bloc.dart';
 
 @immutable
 abstract class RewardsEvent {}
