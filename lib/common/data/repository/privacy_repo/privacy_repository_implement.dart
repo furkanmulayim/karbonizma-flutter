@@ -1,10 +1,10 @@
 import 'dart:convert';
+
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
-import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/repository/privacy_repo/privacy_repository.dart';
-import 'package:karbonizma/common/data/repository/rewards_repo/rewards_repository.dart';
 import 'package:karbonizma/common/data/service/api_constants.dart';
+
 import '../../service/recycle_service/recycle_api_service.dart';
 
 class PrivacyRepositoryImplement implements PrivacyRepository {
@@ -12,6 +12,7 @@ class PrivacyRepositoryImplement implements PrivacyRepository {
   final String hiveBoxName = 'privacyBox';
 
   PrivacyRepositoryImplement({required this.apiService});
+
   @override
   Future<PrivacyModel> getPrivacy() async {
     final box = await Hive.openBox<PrivacyModel>(hiveBoxName);
@@ -22,9 +23,9 @@ class PrivacyRepositoryImplement implements PrivacyRepository {
     }
 
     // API'den veri al
-    final response = await apiService.getData(ApiConstants.githubBaseUrlForPrivacy);
+    final response =
+        await apiService.getData(ApiConstants.githubBaseUrlForPrivacy);
     dynamic singledata = json.decode(response.data);
-
 
     // singledata'dan PrivacyModel listesi oluştur
     final List<PrivacyModel> singlePrivacy = singledata

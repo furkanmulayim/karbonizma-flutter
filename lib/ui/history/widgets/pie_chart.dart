@@ -12,10 +12,10 @@ class PieChartFromWasteItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Color> colors = [
-      AppColors.pieChartColor1,
-      AppColors.pieChartColor2,
-      AppColors.pieChartColor3,
-      AppColors.pieChartColor4,
+      AppColors.greenMiddleGrass,
+      AppColors.greenDark,
+      AppColors.greenWater,
+      AppColors.greenWhiteGrass,
     ];
 
     // Group waste items by name

@@ -31,8 +31,8 @@ class AppColors {
   static const Color accentGreenBackground = Color(0xEBE0FAE1);
 
 // Pie Charts Colors
-  static const Color pieChartColor1 = Color(0xFF6D9A3D);
-  static const Color pieChartColor2 = Color(0xFFB9D47F);
-  static const Color pieChartColor3 = Color(0xFF97CDAD);
-  static const Color pieChartColor4 = Color(0xFF3D6A47);
+  static const Color greenMiddleGrass = Color(0xFF6D9A3D);
+  static const Color greenWhiteGrass = Color(0xFFB9D47F);
+  static const Color greenWater = Color(0xFF97CDAD);
+  static const Color greenDark = Color(0xFF3D6A47);
 }

@@ -1,5 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 
 class HistoryRepository {
