@@ -35,7 +35,7 @@ class _LazyList extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  WidthBox(w:AppDimens.marginMedium),
+                  WidthBox(w: AppDimens.marginMedium),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,8 +54,7 @@ class _LazyList extends StatelessWidget {
                           style: TextStyle(
                             fontSize: AppDimens.fontSmall,
                             fontWeight: FontWeight.w400,
-                            color: AppColors
-                                .accentGreen300,
+                            color: AppColors.accentGreen300,
                           ),
                         ),
                       ],

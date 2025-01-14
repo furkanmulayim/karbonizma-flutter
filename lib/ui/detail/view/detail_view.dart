@@ -8,8 +8,8 @@ import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
+import 'package:karbonizma/common/data/model/rec_items_history/rec_items_history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
@@ -20,6 +20,8 @@ import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
 import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
 import 'package:karbonizma/core/widgets/titles/header_title.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../common/data/repository/remote/recycle_repo/recycle_repository_implement.dart';
 
 part '../widgets/greeting_popup.dart';
 part '../widgets/header_container.dart';
@@ -143,6 +145,16 @@ class _DetailBody extends StatelessWidget {
                                 date: DateFormat("dd MMMM", "tr").format(now),
                                 kg: state.toString(),
                                 category: item.category,
+                                tokenID: item.tokenID),
+                          ),
+                        );
+                        historyBloc.add(
+                          AddRecItems(
+                            RecItemsModel(
+                                id: item.id,
+                                topEcoPoints: pers,
+                                topCo2Points: rat,
+                                kg: state.toString(),
                                 tokenID: item.tokenID),
                           ),
                         );

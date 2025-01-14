@@ -74,7 +74,8 @@ class _WasteCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(textAlign: TextAlign.center,
+                Text(
+                  textAlign: TextAlign.center,
                   '"${item.kg} kg ${item.name}" ${AppTexts.areYouSureDelete}',
                   style: const TextStyle(fontSize: AppDimens.fontMedium),
                 ),
@@ -86,7 +87,9 @@ class _WasteCard extends StatelessWidget {
                       child: NormalButton(
                         onClick: () {
                           historyBloc.add(DeleteHistory(index));
-                          statisCubit.decreasePoints(ecoPoints: item.topEcoPoints, co2Point: item.topCo2Points);
+                          statisCubit.decreasePoints(
+                              ecoPoints: item.topEcoPoints,
+                              co2Point: item.topCo2Points);
                           Navigator.of(context).pop();
                         },
                         text: AppTexts.yes,

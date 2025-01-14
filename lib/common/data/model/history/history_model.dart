@@ -8,7 +8,7 @@ class HistoryModel extends HiveObject {
   int id;
 
   @HiveField(8)
-  final int tokenID;
+  final String tokenID;
 
   @HiveField(1)
   final String name;

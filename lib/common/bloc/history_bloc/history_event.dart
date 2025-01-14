@@ -7,8 +7,12 @@ class FetchAllHistories extends HistoryEvent {}
 
 class AddHistory extends HistoryEvent {
   final HistoryModel history;
-
   AddHistory(this.history);
+}
+
+class AddRecItems extends HistoryEvent {
+  final RecItemsModel recItem;
+  AddRecItems(this.recItem);
 }
 
 class UpdateHistory extends HistoryEvent {

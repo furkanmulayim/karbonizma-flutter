@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
-import 'package:karbonizma/common/data/repository/recycle_repo/recycle_repository.dart';
+import 'package:karbonizma/common/data/repository/remote/recycle_repo/recycle_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'carbon_event.dart';

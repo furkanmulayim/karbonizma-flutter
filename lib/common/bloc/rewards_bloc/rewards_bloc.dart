@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
-import 'package:karbonizma/common/data/repository/rewards_repo/rewards_repository.dart';
+import 'package:karbonizma/common/data/repository/remote/rewards_repo/rewards_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'rewards_event.dart';

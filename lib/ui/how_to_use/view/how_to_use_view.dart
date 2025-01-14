@@ -25,7 +25,7 @@ class _HowToUseViewState extends State<HowToUseView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-      BackAppBar(text: AppTexts.rewards, backClick: () => context.go('/')),
+          BackAppBar(text: AppTexts.rewards, backClick: () => context.go('/')),
       body: _HowToUseBody(),
     );
   }

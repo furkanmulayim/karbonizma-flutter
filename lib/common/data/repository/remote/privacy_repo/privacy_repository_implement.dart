@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
-import 'package:karbonizma/common/data/repository/privacy_repo/privacy_repository.dart';
+import 'package:karbonizma/common/data/repository/remote/privacy_repo/privacy_repository.dart';
 import 'package:karbonizma/common/data/service/api_constants.dart';
 
-import '../../service/recycle_service/recycle_api_service.dart';
+import '../../../service/recycle_service/recycle_api_service.dart';
 
 class PrivacyRepositoryImplement implements PrivacyRepository {
   final GithubApiService apiService;

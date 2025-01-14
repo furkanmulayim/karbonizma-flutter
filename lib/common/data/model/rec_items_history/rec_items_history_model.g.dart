@@ -1,53 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recycle_model.dart';
+part of 'rec_items_history_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class RecycleModelAdapter extends TypeAdapter<RecycleModel> {
+class RecItemsModelAdapter extends TypeAdapter<RecItemsModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 5;
 
   @override
-  RecycleModel read(BinaryReader reader) {
+  RecItemsModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return RecycleModel(
+    return RecItemsModel(
       id: fields[0] as int,
-      name: fields[1] as String,
-      image: fields[2] as String,
-      explain: fields[3] as String,
-      persentage: fields[4] as int,
-      carbonRatio: fields[5] as int,
-      category: fields[6] as String,
-      tokenID: fields[7] as String,
+      kg: fields[2] as String,
+      tokenID: fields[1] as String,
+      topEcoPoints: fields[3] as int,
+      topCo2Points: fields[4] as int,
     );
   }
 
   @override
-  void write(BinaryWriter writer, RecycleModel obj) {
+  void write(BinaryWriter writer, RecItemsModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.name)
+      ..write(obj.tokenID)
       ..writeByte(2)
-      ..write(obj.image)
+      ..write(obj.kg)
       ..writeByte(3)
-      ..write(obj.explain)
+      ..write(obj.topEcoPoints)
       ..writeByte(4)
-      ..write(obj.persentage)
-      ..writeByte(5)
-      ..write(obj.carbonRatio)
-      ..writeByte(6)
-      ..write(obj.category)
-      ..writeByte(7)
-      ..write(obj.tokenID);
+      ..write(obj.topCo2Points);
   }
 
   @override
@@ -56,7 +47,7 @@ class RecycleModelAdapter extends TypeAdapter<RecycleModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is RecycleModelAdapter &&
+      other is RecItemsModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

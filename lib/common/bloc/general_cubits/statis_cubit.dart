@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
-import 'package:karbonizma/common/data/repository/statis_repo/statis_repository.dart';
+import 'package:karbonizma/common/data/repository/local/statis_repo/statis_repository.dart';
 
 class StatisCubit extends Cubit<StatisModel> {
   final StatisRepository _repository;

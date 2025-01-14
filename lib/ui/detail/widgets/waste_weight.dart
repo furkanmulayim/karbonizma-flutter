@@ -42,6 +42,7 @@ class _WasteWeight extends StatelessWidget {
 
 class _WeightText extends StatelessWidget {
   const _WeightText({required this.text});
+
   final String text;
 
   @override

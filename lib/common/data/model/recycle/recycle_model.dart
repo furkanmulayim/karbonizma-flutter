@@ -26,7 +26,7 @@ class RecycleModel extends HiveObject {
   final String category;
 
   @HiveField(7)
-  final int tokenID;
+  final String tokenID;
 
   RecycleModel(
       {required this.id,

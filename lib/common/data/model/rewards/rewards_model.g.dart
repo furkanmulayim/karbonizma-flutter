@@ -23,13 +23,14 @@ class RewardsModelAdapter extends TypeAdapter<RewardsModel> {
       text: fields[3] as String,
       notCompletedImageUrl: fields[4] as String,
       completedImageUrl: fields[5] as String,
+      tokentype: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, RewardsModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class RewardsModelAdapter extends TypeAdapter<RewardsModel> {
       ..writeByte(4)
       ..write(obj.notCompletedImageUrl)
       ..writeByte(5)
-      ..write(obj.completedImageUrl);
+      ..write(obj.completedImageUrl)
+      ..writeByte(6)
+      ..write(obj.tokentype);
   }
 
   @override

@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/core/constants/app_colors.dart';
-import 'package:karbonizma/core/constants/app_dimens.dart';
 
 class PieChartFromWasteItems extends StatelessWidget {
   final List<HistoryModel> wasteItems;
@@ -38,11 +37,8 @@ class PieChartFromWasteItems extends StatelessWidget {
       final color = colors[index % colors.length];
       //final percentage = (kg / totalKg) * 100;
 
-      sections.add(PieChartSectionData(
-          color: color,
-          value: kg,
-          title: '',
-          radius: 20));
+      sections.add(
+          PieChartSectionData(color: color, value: kg, title: '', radius: 20));
 
       legendItems.add(
         Row(

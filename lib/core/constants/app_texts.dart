@@ -13,6 +13,8 @@ class AppTexts {
   static const String err = 'Ferror!';
   static const String yes = 'Evet';
   static const String no = 'Hayır';
+  static const String ok = 'Tamamlandı';
+
 
   //details
   static const String detailPageButton = "Dönüştür";

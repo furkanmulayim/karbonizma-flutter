@@ -2,6 +2,7 @@ part of '../view/detail_view.dart';
 
 class _CarbonContent extends StatelessWidget {
   const _CarbonContent({required this.persentage, required this.ratio});
+
   final int persentage;
   final int ratio;
 
@@ -81,7 +82,9 @@ class _NumericBox extends StatelessWidget {
 
 class _GaugeIndicator extends StatelessWidget {
   const _GaugeIndicator({required this.value});
+
   final int value;
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -21,13 +21,15 @@ class AppRouter {
       GoRoute(
         path: homePath,
         builder: (BuildContext context, GoRouterState state) => HomeView(),
+        routes: [
+          GoRoute(
+            path: historyPath,
+            builder: (BuildContext context, GoRouterState state) => HistoryView(),
+          ),
+        ]
       ),
 
       /// History Page
-      GoRoute(
-        path: historyPath,
-        builder: (BuildContext context, GoRouterState state) => HistoryView(),
-      ),
 
       /// Rewards Page
       GoRoute(

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
-import 'package:karbonizma/common/data/repository/privacy_repo/privacy_repository.dart';
-import 'package:meta/meta.dart';
+import 'package:karbonizma/common/data/repository/remote/privacy_repo/privacy_repository.dart';
 
 part 'privacy_event.dart';
 part 'privacy_state.dart';
@@ -16,7 +16,7 @@ class PrivacyBloc extends Bloc<PrivacyEvent, PrivacyState> {
         }
         emit(PrivacyLoadingSuccesState(privacyPolicy: privacyPolicy));
       } catch (e) {
-        print(e);
+        debugPrint(e.toString());
         emit(PrivacyErrorState());
       }
     });
