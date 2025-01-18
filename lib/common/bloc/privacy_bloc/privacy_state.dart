@@ -7,6 +7,7 @@ class PrivacyInitial extends PrivacyState {}
 
 class PrivacyLoadingSuccesState extends PrivacyState {
   final PrivacyModel privacyPolicy;
+
   PrivacyLoadingSuccesState({required this.privacyPolicy});
 }
 

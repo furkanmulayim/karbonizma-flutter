@@ -15,7 +15,6 @@ class RecycleRepositoryImpl implements RecycleRepository {
 
   @override
   Future<List<RecycleModel>> getWaste() async {
-
     final box = await Hive.openBox<RecycleModel>(hiveBoxName);
 
     if (box.isNotEmpty) {

@@ -19,15 +19,15 @@ class AppRouter {
     routes: <GoRoute>[
       /// Home Page
       GoRoute(
-        path: homePath,
-        builder: (BuildContext context, GoRouterState state) => HomeView(),
-        routes: [
-          GoRoute(
-            path: historyPath,
-            builder: (BuildContext context, GoRouterState state) => HistoryView(),
-          ),
-        ]
-      ),
+          path: homePath,
+          builder: (BuildContext context, GoRouterState state) => HomeView(),
+          routes: [
+            GoRoute(
+              path: historyPath,
+              builder: (BuildContext context, GoRouterState state) =>
+                  HistoryView(),
+            ),
+          ]),
 
       /// History Page
 

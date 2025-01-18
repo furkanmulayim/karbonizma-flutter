@@ -15,7 +15,6 @@ class AppTexts {
   static const String no = 'Hayır';
   static const String ok = 'Tamamlandı';
 
-
   //details
   static const String detailPageButton = "Dönüştür";
   static const String detailPageCarbonTitles = "Karbon İçeriği";
