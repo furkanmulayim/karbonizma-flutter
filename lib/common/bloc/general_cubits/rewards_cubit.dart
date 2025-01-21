@@ -47,7 +47,7 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
                 ownPoint: history.kg,
                 details: reward.text,
                 showingImage: reward.notCompletedImageUrl,
-              ),
+              )
             );
           }
         }

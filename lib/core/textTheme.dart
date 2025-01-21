@@ -1,122 +1,342 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class AppTypography {
-  static const String fontFamily = 'Deneme';
+class CustomTypography {
+  static const String fontFamily = 'Urbanist';
 
-  static TextTheme getTextTheme({
+  static TextTheme getCustomTextTheme({
     required BuildContext context,
     Color? customColor,
   }) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return TextTheme(
-      /// Large Title - regular
-      displayLarge: _getTextStyle(
+      //Large
+      largeTitleRegular: _getTextStyle(
         fontSize: 34,
         fontWeight: FontWeight.w400,
         customColor: customColor,
         isDark: isDark,
       ),
-
-      /// Large Title - emphasized
-      displayMedium: _getTextStyle(
+      largeTitleEmphasized: _getTextStyle(
         fontSize: 34,
         fontWeight: FontWeight.w700,
         customColor: customColor,
         isDark: isDark,
       ),
 
-      /// Title 1 - regular
-      titleLarge: _getTextStyle(
+      //Title 1
+      titleOneRegular: _getTextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w400,
         customColor: customColor,
         isDark: isDark,
       ),
-
-      /// Title 1 - emphasized
-      titleMedium: _getTextStyle(
+      titleOneEmphasized: _getTextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w700,
         customColor: customColor,
         isDark: isDark,
       ),
 
-      /// Title 2 - regular
-      titleSmall: _getTextStyle(
+      //Title 2
+      titleTwoRegular: _getTextStyle(
         fontSize: 22,
         fontWeight: FontWeight.w400,
         customColor: customColor,
         isDark: isDark,
       ),
-
-      /// Title 2 - emphasized
-      headlineLarge: _getTextStyle(
+      titleTwoEmphasized: _getTextStyle(
         fontSize: 22,
         fontWeight: FontWeight.w700,
         customColor: customColor,
         isDark: isDark,
       ),
-      headlineMedium: _getTextStyle(
+
+      //Title 3
+      titleThreeRegular: _getTextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.w700,
-        customColor: customColor,
-        isDark: isDark,
-      ),
-      bodyLarge: _getTextStyle(
-        fontSize: 17,
         fontWeight: FontWeight.w400,
         customColor: customColor,
         isDark: isDark,
       ),
-      bodyMedium: _getTextStyle(
+      titleThreeEmphasized: _getTextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Headline
+      headLineRegular: _getTextStyle(
         fontSize: 17,
         fontWeight: FontWeight.w600,
         customColor: customColor,
         isDark: isDark,
       ),
-      bodySmall: _getTextStyle(
+      headLineItalic: _getTextStyle(
         fontSize: 17,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.italic,
         customColor: customColor,
         isDark: isDark,
       ),
-      labelLarge: _getTextStyle(
+
+      //Body
+      bodyRegular: _getTextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w400,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      bodyEmphasized: _getTextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      bodyItalic: _getTextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      bodyEmphasizedItalic: _getTextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Callout
+      calloutRegular: _getTextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         customColor: customColor,
         isDark: isDark,
       ),
-      labelMedium: _getTextStyle(
+      calloutEmphasized: _getTextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      calloutItalic: _getTextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      calloutEmphasizedItalic: _getTextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Subheadline
+      subheadlineRegular: _getTextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      subheadlineEmphasized: _getTextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w600,
         customColor: customColor,
         isDark: isDark,
       ),
-      labelSmall: _getTextStyle(
+      subheadlineItalic: _getTextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      subheadlineEmphasizedItalic: _getTextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Footnote
+      footnoteRegular: _getTextStyle(
         fontSize: 13,
         fontWeight: FontWeight.w400,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      footnoteEmphasized: _getTextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      footnoteItalic: _getTextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      footnoteEmphasizedItalic: _getTextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Caption 1
+      captionOneRegular: _getTextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionOneEmphasized: _getTextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionOneItalic: _getTextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionOneEmphasizedItalic: _getTextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+
+      //Caption 2
+      captionTwoRegular: _getTextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionTwoEmphasized: _getTextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w600,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionTwoItalic: _getTextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        customColor: customColor,
+        isDark: isDark,
+      ),
+      captionTwoEmphasizedItalic: _getTextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
         customColor: customColor,
         isDark: isDark,
       ),
     );
   }
 
-  // Ortak TextStyle oluşturma metodu
   static TextStyle _getTextStyle({
     required double fontSize,
     required FontWeight fontWeight,
-    FontStyle fontStyle = FontStyle.normal,
+    FontStyle? fontStyle,
     required bool isDark,
     Color? customColor,
   }) {
-    return TextStyle(
-      fontFamily: fontFamily,
+    return GoogleFonts.urbanist(
       fontWeight: fontWeight,
       fontSize: fontSize,
-      fontStyle: fontStyle,
+      fontStyle: fontStyle ?? FontStyle.normal,
       color: customColor ?? (isDark ? Colors.white : Colors.black),
     );
   }
+}
+
+class TextTheme {
+  final TextStyle largeTitleRegular;
+  final TextStyle largeTitleEmphasized;
+  final TextStyle titleOneRegular;
+  final TextStyle titleOneEmphasized;
+  final TextStyle titleTwoRegular;
+  final TextStyle titleTwoEmphasized;
+  final TextStyle titleThreeRegular;
+  final TextStyle titleThreeEmphasized;
+  final TextStyle headLineRegular;
+  final TextStyle headLineItalic;
+  final TextStyle bodyRegular;
+  final TextStyle bodyEmphasized;
+  final TextStyle bodyItalic;
+  final TextStyle bodyEmphasizedItalic;
+  final TextStyle calloutRegular;
+  final TextStyle calloutEmphasized;
+  final TextStyle calloutItalic;
+  final TextStyle calloutEmphasizedItalic;
+  final TextStyle subheadlineRegular;
+  final TextStyle subheadlineEmphasized;
+  final TextStyle subheadlineItalic;
+  final TextStyle subheadlineEmphasizedItalic;
+  final TextStyle footnoteRegular;
+  final TextStyle footnoteEmphasized;
+  final TextStyle footnoteItalic;
+  final TextStyle footnoteEmphasizedItalic;
+  final TextStyle captionOneRegular;
+  final TextStyle captionOneEmphasized;
+  final TextStyle captionOneItalic;
+  final TextStyle captionOneEmphasizedItalic;
+  final TextStyle captionTwoRegular;
+  final TextStyle captionTwoEmphasized;
+  final TextStyle captionTwoItalic;
+  final TextStyle captionTwoEmphasizedItalic;
+
+  const TextTheme(
+      {required this.largeTitleRegular,
+        required this.largeTitleEmphasized,
+        required this.titleOneRegular,
+        required this.titleOneEmphasized,
+        required this.titleTwoRegular,
+        required this.titleTwoEmphasized,
+        required this.titleThreeRegular,
+        required this.titleThreeEmphasized,
+        required this.headLineRegular,
+        required this.headLineItalic,
+        required this.bodyRegular,
+        required this.bodyEmphasized,
+        required this.bodyItalic,
+        required this.bodyEmphasizedItalic,
+        required this.calloutRegular,
+        required this.calloutEmphasized,
+        required this.calloutItalic,
+        required this.calloutEmphasizedItalic,
+        required this.subheadlineRegular,
+        required this.subheadlineEmphasized,
+        required this.subheadlineItalic,
+        required this.subheadlineEmphasizedItalic,
+        required this.footnoteRegular,
+        required this.footnoteEmphasized,
+        required this.footnoteItalic,
+        required this.footnoteEmphasizedItalic,
+        required this.captionOneRegular,
+        required this.captionOneEmphasized,
+        required this.captionOneItalic,
+        required this.captionOneEmphasizedItalic,
+        required this.captionTwoRegular,
+        required this.captionTwoEmphasized,
+        required this.captionTwoItalic,
+        required this.captionTwoEmphasizedItalic});
 }
