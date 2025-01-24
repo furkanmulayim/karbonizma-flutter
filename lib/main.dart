@@ -8,12 +8,10 @@ import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
-import 'package:karbonizma/common/data/model/rec_items_history/rec_items_history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/model/statis/statis_model.dart';
 import 'package:karbonizma/common/data/repository/local/history_repo/history_repository.dart';
-import 'package:karbonizma/common/data/repository/local/rec_items_history/rec_items_history.dart';
 import 'package:karbonizma/common/data/repository/local/statis_repo/statis_repository.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/routes/app_router.dart';
@@ -34,7 +32,6 @@ void main() async {
   Hive.registerAdapter(HistoryModelAdapter());
   Hive.registerAdapter(RewardsModelAdapter());
   Hive.registerAdapter(PrivacyModelAdapter());
-  Hive.registerAdapter(RecItemsModelAdapter());
 
   runApp(MyApp());
 }
@@ -59,7 +56,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => HistoryBloc(
             HistoryRepository(),
-            RecItemsRepository(),
           ),
         ),
       ],

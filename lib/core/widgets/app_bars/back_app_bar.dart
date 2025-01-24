@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 
 class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BackAppBar({super.key, required this.text, required this.backClick});

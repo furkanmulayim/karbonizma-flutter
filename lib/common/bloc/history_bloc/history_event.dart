@@ -11,11 +11,6 @@ class AddHistory extends HistoryEvent {
   AddHistory(this.history);
 }
 
-class AddRecItems extends HistoryEvent {
-  final RecItemsModel recItem;
-
-  AddRecItems(this.recItem);
-}
 
 class UpdateHistory extends HistoryEvent {
   final int key;

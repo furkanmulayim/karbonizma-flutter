@@ -26,7 +26,7 @@ class _RewardsViewState extends State<RewardsView> {
     super.initState();
     rewardsBloc = RewardsBloc(
         rewardsRepository:
-        RewardsRepositoryImpl(apiService: GithubApiService()));
+            RewardsRepositoryImpl(apiService: GithubApiService()));
     rewardsBloc.add(ReweardsInitialEvent());
   }
 
@@ -71,8 +71,8 @@ class _RewardsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RewardsCubit rc = context.read<RewardsCubit>();
-    rc.fetchHistory(rewards);
+    //final RewardsCubit rc = context.read<RewardsCubit>();
+    ///toDo
     return PopScope(
       canPop: true,
       child: Center(
@@ -93,7 +93,7 @@ class _RewardsBody extends StatelessWidget {
                     }
                     return GridView.builder(
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // Her satırda 2 sütun
                         crossAxisSpacing: 8.0,
                         mainAxisSpacing: 8.0,
@@ -126,7 +126,8 @@ class _RewardsBody extends StatelessWidget {
                                 Text(
                                   item.ownPoint,
                                   style: TextStyle(fontSize: 16),
-                                ), Text(
+                                ),
+                                Text(
                                   item.details,
                                   style: TextStyle(fontSize: 16),
                                 ),

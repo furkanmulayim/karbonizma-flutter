@@ -21,6 +21,7 @@ class RewardsBloc extends Bloc<RewardsEvent, RewardsState> {
       }
     });
   }
+  
 
   final RewardsRepository rewardsRepository;
 }

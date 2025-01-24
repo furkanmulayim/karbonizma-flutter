@@ -8,10 +8,9 @@ import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:karbonizma/common/bloc/general_cubits/waste_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
-import 'package:karbonizma/common/data/model/rec_items_history/rec_items_history_model.dart';
 import 'package:karbonizma/common/data/model/recycle/recycle_model.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
-import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
@@ -145,16 +144,6 @@ class _DetailBody extends StatelessWidget {
                                 date: DateFormat("dd MMMM", "tr").format(now),
                                 kg: state.toString(),
                                 category: item.category,
-                                tokenID: item.tokenID),
-                          ),
-                        );
-                        historyBloc.add(
-                          AddRecItems(
-                            RecItemsModel(
-                                id: item.id,
-                                topEcoPoints: pers,
-                                topCo2Points: rat,
-                                kg: state.toString(),
                                 tokenID: item.tokenID),
                           ),
                         );

@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
-import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 
 class PieChartFromWasteItems extends StatelessWidget {
   final List<HistoryModel> wasteItems;
@@ -25,7 +25,7 @@ class PieChartFromWasteItems extends StatelessWidget {
     }
 
     // Calculate total kg
-    final totalKg = groupedItems.values.fold(0.0, (sum, kg) => sum + kg);
+    //final totalKg = groupedItems.values.fold(0.0, (sum, kg) => sum + kg);
 
     // Create sections and legend entries
     final sections = <PieChartSectionData>[];

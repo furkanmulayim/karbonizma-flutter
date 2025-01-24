@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 
 class HeaderTitle extends StatelessWidget {

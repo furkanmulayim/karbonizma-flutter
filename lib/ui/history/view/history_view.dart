@@ -5,8 +5,7 @@ import 'package:karbonizma/common/bloc/general_cubits/statis_cubit.dart';
 import 'package:karbonizma/common/bloc/history_bloc/history_bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
 import 'package:karbonizma/common/data/repository/local/history_repo/history_repository.dart';
-import 'package:karbonizma/common/data/repository/local/rec_items_history/rec_items_history.dart';
-import 'package:karbonizma/core/constants/app_colors.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 import 'package:karbonizma/core/widgets/buttons/normal_button.dart';
@@ -35,9 +34,7 @@ class _HistoryViewState extends State<HistoryView> {
   void initState() {
     super.initState();
     historyBloc = HistoryBloc(
-      HistoryRepository(),
-      RecItemsRepository(),
-    );
+      HistoryRepository(),    );
     historyBloc.add(FetchAllHistories());
   }
 

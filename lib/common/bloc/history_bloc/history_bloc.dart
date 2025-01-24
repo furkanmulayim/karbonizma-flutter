@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:karbonizma/common/data/model/history/history_model.dart';
-import 'package:karbonizma/common/data/model/rec_items_history/rec_items_history_model.dart';
 import 'package:karbonizma/common/data/repository/local/history_repo/history_repository.dart';
-import 'package:karbonizma/common/data/repository/local/rec_items_history/rec_items_history.dart';
 import 'package:meta/meta.dart';
 
 part 'history_event.dart';
@@ -10,11 +8,10 @@ part 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   final HistoryRepository _historyRepository;
-  final RecItemsRepository _recItemRepository;
+
 
   HistoryBloc(
     this._historyRepository,
-    this._recItemRepository,
   ) : super(HistoryInitial()) {
     on<FetchAllHistories>((event, emit) async {
       try {
@@ -35,13 +32,6 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
       }
     });
 
-    on<AddRecItems>((event, emit) async {
-      try {
-        await _recItemRepository.addOrUpdateHistory(event.recItem);
-      } catch (e) {
-        rethrow;
-      }
-    });
 
     on<UpdateHistory>((event, emit) async {
       try {

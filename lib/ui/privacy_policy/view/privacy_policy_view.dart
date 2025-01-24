@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:karbonizma/common/bloc/privacy_bloc/privacy_bloc.dart';
+import 'package:karbonizma/common/data/model/privacy/privacy_model.dart';
+import 'package:karbonizma/common/data/repository/remote/privacy_repo/privacy_repository_implement.dart';
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
-
-import '../../../common/data/model/privacy/privacy_model.dart';
-import '../../../common/data/repository/remote/privacy_repo/privacy_repository_implement.dart';
 
 part '../widgets/privacy_policy_widget.dart';
 
