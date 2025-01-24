@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class GithubApiService {
   final Dio _dio = Dio();
@@ -9,7 +8,6 @@ class GithubApiService {
       final response = await _dio.get(url);
       return response;
     } catch (e) {
-      debugPrint(e.toString());
       rethrow;
     }
   }

@@ -17,33 +17,27 @@ class RewardsModelAdapter extends TypeAdapter<RewardsModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return RewardsModel(
-      id: fields[0] as int,
-      tokenID: fields[1] as String,
-      compare: fields[2] as int,
-      text: fields[3] as String,
-      notCompletedImageUrl: fields[4] as String,
-      completedImageUrl: fields[5] as String,
-      tokenType: fields[6] as String,
+      compare: fields[0] as int,
+      text: fields[1] as String,
+      notCompletedImageUrl: fields[2] as String,
+      completedImageUrl: fields[3] as String,
+      tokenType: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, RewardsModel obj) {
     writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.tokenID)
-      ..writeByte(2)
-      ..write(obj.compare)
-      ..writeByte(3)
-      ..write(obj.text)
-      ..writeByte(4)
-      ..write(obj.notCompletedImageUrl)
       ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.compare)
+      ..writeByte(1)
+      ..write(obj.text)
+      ..writeByte(2)
+      ..write(obj.notCompletedImageUrl)
+      ..writeByte(3)
       ..write(obj.completedImageUrl)
-      ..writeByte(6)
+      ..writeByte(4)
       ..write(obj.tokenType);
   }
 

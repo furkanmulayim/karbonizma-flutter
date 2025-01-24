@@ -1,4 +1,6 @@
 class AppTexts {
+  static const String appName = "Karbonizma";
+
   //congrats page
   static const String congratsButtonTitle = "Ana Menü";
   static const String congratsEnterTitle =
@@ -25,7 +27,7 @@ class AppTexts {
 
   //home page
   static const String homeName = "Doğayı Koruyun!";
-  static const String homePageButton = "Geçmiş Dönüşümlerim";
+  static const String homePageButton = "Geçmiş";
   static const String homePageListTitle = "Geri Dönüştürülebilir Atıklar!";
   static const String homePagePointTitles = "Puan İstatistikleri";
 
@@ -38,7 +40,5 @@ class AppTexts {
   static const String settings = 'Ayarlar';
   static const String quit = 'Uygulamayı Kapat';
   static const String rewards = 'Ödüller';
-  static const String privacy = 'KVKK';
-  static const String howToUse = 'Nasıl Kullanılır?';
-  static const String privacyPolicy = 'Gizlilik Sözleşmesi ve KVKK';
+  static const String privacyPolicy = 'Developer Hakkında';
 }

@@ -1,13 +1,11 @@
 class RemainingModel {
   String remainingPoint;
-  String ownPoint;
   String details;
   String showingImage;
 
   // Constructor
   RemainingModel({
     required this.remainingPoint,
-    required this.ownPoint,
     required this.details,
     required this.showingImage,
   });
@@ -16,7 +14,6 @@ class RemainingModel {
   factory RemainingModel.fromMap(Map<String, dynamic> map) {
     return RemainingModel(
       remainingPoint: map['remainingPoint'] ?? '',
-      ownPoint: map['ownPoint'] ?? '',
       details: map['details'] ?? '',
       showingImage: map['showingImage'] ?? '',
     );
@@ -26,7 +23,6 @@ class RemainingModel {
   Map<String, dynamic> toMap() {
     return {
       'remainingPoint': remainingPoint,
-      'ownPoint': ownPoint,
       'details': details,
       'showingImage': showingImage,
     };

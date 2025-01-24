@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => WasteCubit()),
         BlocProvider(create: (_) => StatisCubit(StatisRepository())),
-        BlocProvider(create: (_) => RewardsCubit(HistoryRepository())),
+        BlocProvider(create: (_) => RewardsCubit()),
         BlocProvider(
           create: (_) => CarbonBloc(
             recycleRepo: RecycleRepositoryImpl(

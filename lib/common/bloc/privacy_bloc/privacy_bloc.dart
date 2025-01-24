@@ -16,7 +16,6 @@ class PrivacyBloc extends Bloc<PrivacyEvent, PrivacyState> {
         }
         emit(PrivacyLoadingSuccesState(privacyPolicy: privacyPolicy));
       } catch (e) {
-        debugPrint(e.toString());
         emit(PrivacyErrorState());
       }
     });

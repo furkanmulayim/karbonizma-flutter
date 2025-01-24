@@ -11,7 +11,6 @@ import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 
-
 class RewardsView extends StatefulWidget {
   const RewardsView({super.key});
 
@@ -122,10 +121,6 @@ class _RewardsBody extends StatelessWidget {
                                 SizedBox(height: 8),
                                 Text(
                                   item.remainingPoint,
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                Text(
-                                  item.ownPoint,
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 Text(

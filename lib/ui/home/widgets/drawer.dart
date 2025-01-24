@@ -11,14 +11,14 @@ class _Drawer extends StatelessWidget {
       padding: EdgeInsets.only(top: AppDimens.drawerTopHeight),
       children: [
         listTiling(
-          text: AppTexts.howToUse,
-          icon: Icons.how_to_reg,
-          onTap: () => context.go('/rewards'),
-        ),
-        listTiling(
           text: AppTexts.privacyPolicy,
           icon: Icons.privacy_tip,
           onTap: () => context.go('/privacy'),
+        ),
+        listTiling(
+          text: '${AppTexts.appName} ($versData)',
+          icon: Icons.verified_outlined,
+          onTap: () {},
         ),
       ],
     );

@@ -35,7 +35,7 @@ class _HowToUseBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-        canPop: true,
+        canPop: false,
         child: Center(
           child: Column(),
         ));

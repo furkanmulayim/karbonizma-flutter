@@ -41,7 +41,7 @@ class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
       create: (context) => privacyBloc,
       child: Scaffold(
         appBar: BackAppBar(
-            text: AppTexts.privacy, backClick: () => context.go('/')),
+            text: AppTexts.appName, backClick: () => context.go('/')),
         body: BlocBuilder<PrivacyBloc, PrivacyState>(builder: (context, state) {
           switch (state) {
             case PrivacyLoadingState(): //loading
