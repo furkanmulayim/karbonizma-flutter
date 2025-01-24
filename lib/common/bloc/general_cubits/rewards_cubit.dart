@@ -11,13 +11,14 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
 
   Future<void> fetchHistory(List<RewardsModel> rewardsList) async {
     final statis = await _statisRepo.getStatis();
+    remainingList.clear();
 
     var eco = statis.ecoPoints;
     var co = statis.co2Point;
     var total = statis.totalPoint;
 
     for (var reward in rewardsList) {
-      print("FURKAN : ${reward.tokenType}, ${reward.text}");
+      print("FURKAN : ${reward.compare}, ${reward.text}");
       var compare = reward.compare;
       var text = reward.text;
       var okImg = reward.completedImageUrl;
@@ -29,7 +30,7 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
           addRemainList(eco, compare, text, noImg);
         } else {
           //COMPLETED
-          addRemainList(eco, compare, text, okImg);
+          addRemainList(compare, compare, text, okImg);
         }
       } else if (reward.tokenType == 'co') {
         if (compare > co) {
@@ -37,7 +38,7 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
           addRemainList(co, compare, text, noImg);
         } else {
           //COMPLETED
-          addRemainList(co, compare, text, okImg);
+          addRemainList(compare, compare, text, okImg);
         }
       } else if (reward.tokenType == 're') {
         if (compare > total) {
@@ -45,7 +46,7 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
           addRemainList(total, compare, text, noImg);
         } else {
           //COMPLETED
-          addRemainList(total, compare, text, okImg);
+          addRemainList(compare, compare, text, okImg);
         }
       }
     }
@@ -53,14 +54,14 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
   }
 
   void addRemainList(
-    eco,
+    deg,
     comp,
     text,
     image,
   ) {
     remainingList.add(
       RemainingModel(
-        remainingPoint: '$eco/$comp',
+        remainingPoint: '$deg/$comp',
         details: text,
         showingImage: image,
       ),

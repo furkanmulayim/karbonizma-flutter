@@ -9,6 +9,7 @@ import 'package:karbonizma/common/data/repository/remote/rewards_repo/rewards_re
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 
 class RewardsView extends StatefulWidget {
@@ -85,21 +86,13 @@ class _RewardsBody extends StatelessWidget {
               Expanded(
                 child: BlocBuilder<RewardsCubit, List<RemainingModel>>(
                   builder: (context, list) {
-                    if (list.isEmpty) {
-                      return Center(
-                        child: Text(
-                          'LA DAHA DÖNÜŞÜM YAPMADIN ',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      );
-                    }
                     return GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // Her satırda 2 sütun
                         crossAxisSpacing: 8.0,
                         mainAxisSpacing: 8.0,
-                        childAspectRatio: 1.0, // Kare görünüm
+                        childAspectRatio: 0.9, // Kare görünüm
                       ),
                       itemCount: list.length,
                       itemBuilder: (context, index) {
@@ -121,11 +114,17 @@ class _RewardsBody extends StatelessWidget {
                                 SizedBox(height: 8),
                                 Text(
                                   item.remainingPoint,
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(
+                                      fontSize: AppDimens.fontxMedium,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.accentGreen500),
                                 ),
                                 Text(
                                   item.details,
-                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: AppDimens.fontMedium,
+                                      color: AppColors.accentGreen500),
                                 ),
                               ],
                             ),
