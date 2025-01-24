@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:karbonizma/common/bloc/general_cubits/rewards_cubit.dart';
 import 'package:karbonizma/common/bloc/rewards_bloc/rewards_bloc.dart';
 import 'package:karbonizma/common/data/model/remaining/remaining_rewards.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/repository/remote/rewards_repo/rewards_repository_implement.dart';
+import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
+import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
 
-import '../../../common/bloc/general_cubits/rewards_cubit.dart';
-import '../../../common/data/service/recycle_service/recycle_api_service.dart';
 
 class RewardsView extends StatefulWidget {
   const RewardsView({super.key});
@@ -71,7 +72,9 @@ class _RewardsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final RewardsCubit rc = context.read<RewardsCubit>();
+    final RewardsCubit rc = context.read<RewardsCubit>();
+    rc.fetchHistory(rewards);
+
     ///toDo
     return PopScope(
       canPop: true,
@@ -112,12 +115,10 @@ class _RewardsBody extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.network(
-                                  item.showingImage,
-                                  height: 80,
-                                  width: 80,
-                                  fit: BoxFit.cover,
-                                ),
+                                Image.network(item.showingImage,
+                                    height: AppDimens.iconXXLarge,
+                                    width: AppDimens.iconXXLarge,
+                                    fit: BoxFit.cover),
                                 SizedBox(height: 8),
                                 Text(
                                   item.remainingPoint,

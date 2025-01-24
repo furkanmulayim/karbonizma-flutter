@@ -23,7 +23,7 @@ class RewardsModel extends HiveObject {
   final String completedImageUrl;
 
   @HiveField(6)
-  final String tokentype;
+  final String tokenType;
 
   RewardsModel({
     required this.id,
@@ -32,7 +32,7 @@ class RewardsModel extends HiveObject {
     required this.text,
     required this.notCompletedImageUrl,
     required this.completedImageUrl,
-    required this.tokentype,
+    required this.tokenType,
   });
 
   factory RewardsModel.fromJson(Map<String, dynamic> json) {
@@ -43,7 +43,7 @@ class RewardsModel extends HiveObject {
       text: json['text'],
       notCompletedImageUrl: json['notCompletedImageUrl'],
       completedImageUrl: json['completedImageUrl'],
-      tokentype: json['tokentype'] ?? '',
+      tokenType: json['tokenType'] ?? '',
     );
   }
 
@@ -55,7 +55,7 @@ class RewardsModel extends HiveObject {
       'text': text,
       'notCompletedImageUrl': notCompletedImageUrl,
       'completedImageUrl': completedImageUrl,
-      'tokentype': tokentype,
+      'tokenType': tokenType,
     };
   }
 }

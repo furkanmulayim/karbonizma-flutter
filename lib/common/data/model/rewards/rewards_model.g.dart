@@ -23,7 +23,7 @@ class RewardsModelAdapter extends TypeAdapter<RewardsModel> {
       text: fields[3] as String,
       notCompletedImageUrl: fields[4] as String,
       completedImageUrl: fields[5] as String,
-      tokentype: fields[6] as String,
+      tokenType: fields[6] as String,
     );
   }
 
@@ -44,7 +44,7 @@ class RewardsModelAdapter extends TypeAdapter<RewardsModel> {
       ..writeByte(5)
       ..write(obj.completedImageUrl)
       ..writeByte(6)
-      ..write(obj.tokentype);
+      ..write(obj.tokenType);
   }
 
   @override

@@ -9,21 +9,22 @@ class RewardsCubit extends Cubit<List<RemainingModel>> {
 
   final HistoryRepository _repository;
 
-  Future<void> fetchHistory(List<RewardsModel> rewardsList, StatisModel) async {
+  Future<void> fetchHistory(List<RewardsModel> rewardsList) async {
     final List<RemainingModel> remainingList = [];
 
     for (var reward in rewardsList) {
-      if (reward.tokentype == 'eco') {
+      print('FDEBUG: ${reward.tokenType}');
+      if (reward.tokenType == 'eco') {
         remainingList.add(
           RemainingModel(
             remainingPoint: 'AppTexts.ok',
             ownPoint: 'history.kg',
             details: 'reward.text',
-            showingImage: 'reward.completedImageUrl',
+            showingImage: reward.notCompletedImageUrl,
           ),
         );
-      } else if (reward.tokentype == 'co') {
-      } else if (reward.tokentype == 're') {}
+      } else if (reward.tokenType == 'co') {
+      } else if (reward.tokenType == 're') {}
     }
     emit(remainingList);
   }
