@@ -1,70 +1,52 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:karbonizma/common/data/model/remaining/remaining_rewards.dart';
 import 'package:karbonizma/common/data/model/rewards/rewards_model.dart';
 import 'package:karbonizma/common/data/repository/local/statis_repo/statis_repository.dart';
 
 class RewardsCubit extends Cubit<List<RemainingModel>> {
-  RewardsCubit() : super([]);
+  RewardsCubit({required StatisRepository statisRepository})
+      : _statisRepository = statisRepository,
+        super([]);
 
-  final List<RemainingModel> remainingList = [];
-  final _statisRepo = StatisRepository();
+  final StatisRepository _statisRepository;
 
   Future<void> fetchHistory(List<RewardsModel> rewardsList) async {
-    final statis = await _statisRepo.getStatis();
-    remainingList.clear();
+    try {
+      emit([]); // Temiz başlangıç
+      final statis = await _statisRepository.getStatis();
 
-    var eco = statis.ecoPoints;
-    var co = statis.co2Point;
-    var total = statis.totalPoint;
-
-    for (var reward in rewardsList) {
-      print("FURKAN : ${reward.compare}, ${reward.text}");
-      var compare = reward.compare;
-      var text = reward.text;
-      var okImg = reward.completedImageUrl;
-      var noImg = reward.notCompletedImageUrl;
-
-      if (reward.tokenType == 'eco') {
-        if (compare > eco) {
-          // NOT COMPLETED
-          addRemainList(eco, compare, text, noImg);
-        } else {
-          //COMPLETED
-          addRemainList(compare, compare, text, okImg);
-        }
-      } else if (reward.tokenType == 'co') {
-        if (compare > co) {
-          // NOT COMPLETED
-          addRemainList(co, compare, text, noImg);
-        } else {
-          //COMPLETED
-          addRemainList(compare, compare, text, okImg);
-        }
-      } else if (reward.tokenType == 're') {
-        if (compare > total) {
-          // NOT COMPLETED
-          addRemainList(total, compare, text, noImg);
-        } else {
-          //COMPLETED
-          addRemainList(compare, compare, text, okImg);
-        }
+      final List<RemainingModel> remainingList = [];
+      for (var reward in rewardsList) {
+        remainingList.add(_evaluateReward(statis, reward));
+        emit(remainingList);
       }
+
+    } catch (error) {
+      debugPrint("Error in fetchHistory: $error");
+      emit([]);
     }
-    emit(remainingList);
   }
 
-  void addRemainList(
-    deg,
-    comp,
-    text,
-    image,
-  ) {
-    remainingList.add(
-      RemainingModel(
-        remainingPoint: '$deg/$comp',
-        details: text,
-        showingImage: image,
-      ),
+  RemainingModel _evaluateReward(dynamic statis, RewardsModel reward) {
+    final compare = reward.compare;
+    final text = reward.text;
+    final okImg = reward.completedImageUrl;
+    final noImg = reward.notCompletedImageUrl;
+
+    final int currentPoints = reward.tokenType == 'eco'
+        ? statis.ecoPoints
+        : reward.tokenType == 'co'
+        ? statis.co2Point
+        : statis.totalPoint;
+
+    final bool isCompleted = compare <= currentPoints;
+    return RemainingModel(
+      remainingPoint: isCompleted
+          ? '$compare/$compare'
+          : '$currentPoints/$compare',
+      details: text,
+      showingImage: isCompleted ? okImg : noImg,
     );
   }
 }

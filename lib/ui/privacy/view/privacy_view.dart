@@ -7,18 +7,22 @@ import 'package:karbonizma/common/data/repository/remote/privacy_repo/privacy_re
 import 'package:karbonizma/common/data/service/recycle_service/recycle_api_service.dart';
 import 'package:karbonizma/core/constants/app_dimens.dart';
 import 'package:karbonizma/core/constants/app_texts.dart';
+import 'package:karbonizma/core/theme/app_colors.dart';
 import 'package:karbonizma/core/widgets/app_bars/back_app_bar.dart';
+import 'package:karbonizma/core/widgets/spacers/heightbox.dart';
+import 'package:karbonizma/core/widgets/spacers/widthbox.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-part '../widgets/privacy_policy_widget.dart';
+part '../widgets/developer_profile_view.dart';
 
-class PrivacyPolicyView extends StatefulWidget {
-  const PrivacyPolicyView({super.key});
+class PrivacyView extends StatefulWidget {
+  const PrivacyView({super.key});
 
   @override
-  State<PrivacyPolicyView> createState() => _PrivacyPolicyViewState();
+  State<PrivacyView> createState() => _PrivacyViewState();
 }
 
-class _PrivacyPolicyViewState extends State<PrivacyPolicyView> {
+class _PrivacyViewState extends State<PrivacyView> {
   late final PrivacyBloc privacyBloc;
 
   @override
@@ -69,11 +73,8 @@ class _PrivacyPolicyBody extends StatelessWidget {
     return PopScope(
         canPop: true,
         child: Center(
-          child: Column(
-            children: [
-              Flexible(child: _PrivacyScreen(privacyData: privacyData)),
-            ],
-          ),
-        ));
+        child: DeveloperProfileView(privacyData: privacyData),
+      ),
+    );
   }
 }

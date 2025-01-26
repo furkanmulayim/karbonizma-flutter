@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:karbonizma/ui/detail/view/detail_view.dart';
 import 'package:karbonizma/ui/history/view/history_view.dart';
 import 'package:karbonizma/ui/home/view/home_view.dart';
-import 'package:karbonizma/ui/privacy_policy/view/privacy_policy_view.dart';
+import 'package:karbonizma/ui/privacy/view/privacy_view.dart';
 import 'package:karbonizma/ui/rewards/view/rewards_view.dart';
 
 class AppRouter {
@@ -40,8 +40,7 @@ class AppRouter {
       /// Privacy Page
       GoRoute(
         path: privacyPath,
-        builder: (BuildContext context, GoRouterState state) =>
-            PrivacyPolicyView(),
+        builder: (BuildContext context, GoRouterState state) => PrivacyView(),
       ),
 
       /// Details Page

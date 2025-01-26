@@ -7,6 +7,9 @@ class PrivacyModel extends HiveObject {
   @HiveField(0)
   final String devName;
 
+  @HiveField(9)
+  final String devIco;
+
   @HiveField(1)
   final String devTitle;
 
@@ -33,6 +36,7 @@ class PrivacyModel extends HiveObject {
 
   PrivacyModel({
     required this.devName,
+    required this.devIco,
     required this.devTitle,
     required this.devComm,
     required this.devGithub,
@@ -46,6 +50,7 @@ class PrivacyModel extends HiveObject {
   factory PrivacyModel.fromJson(Map<String, dynamic> json) {
     return PrivacyModel(
       devName: json['devName'] as String,
+      devIco: json['devIco'] as String,
       devTitle: json['devTitle'] as String,
       devComm: json['devComm'] as String,
       devGithub: json['devGithub'] as String,
@@ -60,6 +65,7 @@ class PrivacyModel extends HiveObject {
   Map<String, dynamic> toJson() {
     return {
       'devName': devName,
+      'devICo': devIco,
       'devTitle': devTitle,
       'devComm': devComm,
       'devGithub': devGithub,

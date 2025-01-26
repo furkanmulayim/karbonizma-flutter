@@ -53,8 +53,6 @@ class _RewardsViewState extends State<RewardsView> {
                 return Center(child: Text('No rewards available'));
               }
               return _RewardsBody(rewards: state.rewards);
-            } else if (state is RewardsErrorState) {
-              return Center(child: Text(AppTexts.err));
             } else {
               return Center(child: CircularProgressIndicator());
             }
@@ -80,7 +78,8 @@ class _RewardsBody extends StatelessWidget {
       canPop: true,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppDimens.paddingMedium),
           child: Column(
             children: [
               Expanded(

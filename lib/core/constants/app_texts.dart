@@ -10,9 +10,8 @@ class AppTexts {
 
   //general
   static const String noDataForHistory =
-      'Herhangi bir geçmiş bulunamadı.Lütfen önce dönüşüm yapın.';
+      'Herhangi bir geçmiş bulunamadı. Lütfen önce dönüşüm yapın.';
   static const String areYouSureDelete = 'silmek istediğinize emin misiniz?';
-  static const String err = 'Ferror!';
   static const String yes = 'Evet';
   static const String no = 'Hayır';
   static const String ok = 'Tamamlandı';

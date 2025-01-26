@@ -49,6 +49,9 @@ dependencies:
   #App Icons
   flutter_launcher_icons: ^0.14.3
 
+  #Launcher
+  url_launcher: ^6.0.20
+
 
 
 dev_dependencies:

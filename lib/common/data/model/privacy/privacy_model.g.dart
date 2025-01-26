@@ -18,6 +18,7 @@ class PrivacyModelAdapter extends TypeAdapter<PrivacyModel> {
     };
     return PrivacyModel(
       devName: fields[0] as String,
+      devIco: fields[9] as String,
       devTitle: fields[1] as String,
       devComm: fields[2] as String,
       devGithub: fields[3] as String,
@@ -32,9 +33,11 @@ class PrivacyModelAdapter extends TypeAdapter<PrivacyModel> {
   @override
   void write(BinaryWriter writer, PrivacyModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.devName)
+      ..writeByte(9)
+      ..write(obj.devIco)
       ..writeByte(1)
       ..write(obj.devTitle)
       ..writeByte(2)

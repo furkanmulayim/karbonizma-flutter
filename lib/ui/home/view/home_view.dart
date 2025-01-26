@@ -137,7 +137,7 @@ class _MenuBody extends StatelessWidget {
                   },
                   text: AppTexts.rewards,
                   icon: Icon(
-                    Icons.fast_rewind,
+                    Icons.military_tech,
                     color: AppColors.textWhite,
                   ),
                 ),
