@@ -126,7 +126,7 @@ class _MenuBody extends StatelessWidget {
                   text: AppTexts.homePageButton,
                   icon: Icon(
                     Icons.history,
-                    color: AppColors.textWhite,
+                    color: AppColors.accentGreenBackground,
                   ),
                 ),
               ),
@@ -138,7 +138,7 @@ class _MenuBody extends StatelessWidget {
                   text: AppTexts.rewards,
                   icon: Icon(
                     Icons.military_tech,
-                    color: AppColors.textWhite,
+                    color: AppColors.accentGreenBackground,
                   ),
                 ),
               ),
